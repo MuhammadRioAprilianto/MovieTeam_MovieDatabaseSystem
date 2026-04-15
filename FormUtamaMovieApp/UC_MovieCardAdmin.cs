@@ -33,3 +33,37 @@ namespace FormUtamaMovieApp
                 }
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show($"Yakin ingin menghapus film '{_judul}'?",
+                              "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (dr == DialogResult.Yes)
+            {
+                using (SqlConnection conn = KoneksiDB.GetConnection())
+                {
+                    try
+                    {
+                        conn.Open();
+                        string query = "UPDATE Movies SET is_deleted = 1 WHERE movie_id = @id";
+
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@id", _movieId);
+                            cmd.ExecuteNonQuery();
+
+                            MessageBox.Show("Film berhasil dihapus dari katalog.");
+
+                            this.Parent.Controls.Remove(this);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Gagal menghapus: " + ex.Message);
+                    }
+                }
+            }
+        }
+    }
+}
