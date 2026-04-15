@@ -57,3 +57,43 @@ namespace FormUtamaMovieApp
                 }
             }
         }
+
+        private void btnDeleteHistory_Click(object sender, EventArgs e)
+        {
+            if (dgvHistory.SelectedRows.Count > 0)
+            {
+                int idHistoryTerpilih = Convert.ToInt32(dgvHistory.SelectedRows[0].Cells["history_id"].Value);
+
+                DialogResult dialog = MessageBox.Show("Yakin ingin menghapus film ini dari riwayat tontonan?", "Hapus History", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dialog == DialogResult.Yes)
+                {
+                    using (SqlConnection conn = KoneksiDB.GetConnection())
+                    {
+                        try
+                        {
+                            conn.Open();
+                            string query = "DELETE FROM History WHERE history_id = @hid";
+                            using (SqlCommand cmd = new SqlCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("@hid", idHistoryTerpilih);
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            MessageBox.Show("Riwayat tontonan berhasil dihapus!", "Sukses");
+                            LoadDataHistory();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Gagal menghapus data: " + ex.Message, "Error");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Silakan klik salah satu film di tabel terlebih dahulu sebelum menghapus.", "Pilih Data");
+            }
+        }
+    }
+}
