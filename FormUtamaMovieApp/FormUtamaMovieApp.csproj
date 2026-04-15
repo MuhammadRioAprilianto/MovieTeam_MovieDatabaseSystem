@@ -103,7 +103,9 @@
     <Compile Include="UC_MovieCardAdmin.Designer.cs">
       <DependentUpon>UC_MovieCardAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_MovieItem.cs" />
+    <Compile Include="UC_MovieItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UC_MovieItem.Designer.cs">
       <DependentUpon>UC_MovieItem.cs</DependentUpon>
     </Compile>
