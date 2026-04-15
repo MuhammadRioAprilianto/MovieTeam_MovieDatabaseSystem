@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{61E01344-7026-4F01-9ED7-F5615AB3808C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>FormUtamaMovieApp</RootNamespace>
+    <AssemblyName>FormUtamaMovieApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs" />
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDialogMovie.cs" />
+    <Compile Include="FormDialogMovie.Designer.cs">
+      <DependentUpon>FormDialogMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormIsiReview.cs" />
+    <Compile Include="FormIsiReview.Designer.cs">
+      <DependentUpon>FormIsiReview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin.cs" />
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KoneksiDB.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UC_AdminDashboard.cs" />
+    <Compile Include="UC_AdminDashboard.Designer.cs">
+      <DependentUpon>UC_AdminDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_History.cs" />
+    <Compile Include="UC_History.Designer.cs">
+      <DependentUpon>UC_History.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_KatalogMovie.cs" />
+    <Compile Include="UC_KatalogMovie.Designer.cs">
+      <DependentUpon>UC_KatalogMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_ManageMovie.cs" />
+    <Compile Include="UC_ManageMovie.Designer.cs">
+      <DependentUpon>UC_ManageMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_MovieCardAdmin.cs" />
+    <Compile Include="UC_MovieCardAdmin.Designer.cs">
+      <DependentUpon>UC_MovieCardAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_MovieItem.cs" />
+    <Compile Include="UC_MovieItem.Designer.cs">
+      <DependentUpon>UC_MovieItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Review.cs" />
+    <Compile Include="UC_Review.Designer.cs">
+      <DependentUpon>UC_Review.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Watchlist.cs" />
+    <Compile Include="UC_Watchlist.Designer.cs">
+      <DependentUpon>UC_Watchlist.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDialogMovie.resx">
+      <DependentUpon>FormDialogMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormIsiReview.resx">
+      <DependentUpon>FormIsiReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UC_AdminDashboard.resx">
+      <DependentUpon>UC_AdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_History.resx">
+      <DependentUpon>UC_History.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_KatalogMovie.resx">
+      <DependentUpon>UC_KatalogMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_ManageMovie.resx">
+      <DependentUpon>UC_ManageMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_MovieCardAdmin.resx">
+      <DependentUpon>UC_MovieCardAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_MovieItem.resx">
+      <DependentUpon>UC_MovieItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Review.resx">
+      <DependentUpon>UC_Review.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Watchlist.resx">
+      <DependentUpon>UC_Watchlist.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
