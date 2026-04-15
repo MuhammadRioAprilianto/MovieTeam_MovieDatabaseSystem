@@ -31,3 +31,98 @@ namespace FormUtamaMovieApp
             panelLogin.Visible = true;
             panel1.Visible = false;
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtUsernameLogin.Text) || string.IsNullOrWhiteSpace(txtPasswordLogin.Text))
+            {
+                MessageBox.Show("Username dan Password tidak boleh kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (SqlConnection conn = KoneksiDB.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT id, nama, role_id FROM Accounts WHERE username = @user AND password = @pass";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@user", txtUsernameLogin.Text);
+                        cmd.Parameters.AddWithValue("@pass", txtPasswordLogin.Text);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                SesiUser.IdUser = Convert.ToInt32(reader["id"]);
+                                SesiUser.Nama = reader["nama"].ToString();
+                                SesiUser.RoleId = Convert.ToInt32(reader["role_id"]);
+
+                                MessageBox.Show("Selamat datang, " + SesiUser.Nama + "!", "Berhasil");
+
+                                this.DialogResult = DialogResult.OK;
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Username atau Password salah!", "Gagal");
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error Koneksi: " + ex.Message);
+                }
+            }
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNamaRegis.Text) || string.IsNullOrWhiteSpace(txtUserRegis.Text) || string.IsNullOrWhiteSpace(txtPasswordRegis.Text))
+            {
+                MessageBox.Show("Semua kolom (Nama, Username, Password) wajib diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (SqlConnection conn = KoneksiDB.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "INSERT INTO Accounts (role_id, username, password, nama) VALUES (2, @user, @pass, @nama)";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nama", txtNamaRegis.Text);
+                        cmd.Parameters.AddWithValue("@user", txtUserRegis.Text);
+                        cmd.Parameters.AddWithValue("@pass", txtPasswordRegis.Text);
+
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Akun berhasil dibuat! Silakan Login.", "Sukses");
+
+                        txtNamaRegis.Clear();
+                        txtUserRegis.Clear();
+                        txtPasswordRegis.Clear();
+
+                        panelLogin.Visible = true;
+                        panel1.Visible = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (ex.Message.Contains("UNIQUE KEY") || ex.Message.Contains("duplicate key"))
+                    {
+                        MessageBox.Show("Username tersebut sudah digunakan.", "Gagal Daftar");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Gagal Daftar: " + ex.Message);
+                    }
+                }
+            }
+        }
+    }
+}
