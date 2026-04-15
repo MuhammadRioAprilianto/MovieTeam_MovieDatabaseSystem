@@ -29,3 +29,24 @@ namespace FormUtamaMovieApp
                                FROM History h JOIN Movies m ON h.movie_id = m.movie_id 
                                JOIN Genres g ON m.genre_id = g.genre_id 
                                GROUP BY g.nama_genre", dgvDemografiGenre, conn);
+
+                    FillGrid(@"SELECT r.tanggal_diposting AS 'Waktu', a.nama AS 'User', m.judul AS 'Film', 
+                               r.skor_rating AS '⭐', r.komentar AS 'Review' 
+                               FROM Reviews r JOIN Accounts a ON r.user_id = a.id 
+                               JOIN Movies m ON r.movie_id = m.movie_id 
+                               ORDER BY r.tanggal_diposting DESC", dgvAktivitasReview, conn);
+                }
+                catch (Exception ex) { MessageBox.Show("Error Laporan: " + ex.Message); }
+            }
+        }
+
+        private void FillGrid(string query, DataGridView dgv, SqlConnection conn)
+        {
+            SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dgv.DataSource = dt;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+    }
+}
