@@ -115,7 +115,9 @@
     <Compile Include="UC_Review.Designer.cs">
       <DependentUpon>UC_Review.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_Watchlist.cs" />
+    <Compile Include="UC_Watchlist.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UC_Watchlist.Designer.cs">
       <DependentUpon>UC_Watchlist.cs</DependentUpon>
     </Compile>
