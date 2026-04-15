@@ -62,3 +62,72 @@ namespace FormUtamaMovieApp
                 }
             }
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (dgvComment.CurrentRow != null)
+            {
+                int idReview = Convert.ToInt32(dgvComment.CurrentRow.Cells["review_id"].Value);
+                int skorBaru = Convert.ToInt32(dgvComment.CurrentRow.Cells["Rating"].Value);
+                string komenBaru = dgvComment.CurrentRow.Cells["Ulasan / Komentar"].Value.ToString();
+
+                using (SqlConnection conn = KoneksiDB.GetConnection())
+                {
+                    try
+                    {
+                        conn.Open();
+                        string query = "UPDATE Reviews SET skor_rating = @skor, komentar = @komen WHERE review_id = @id";
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@skor", skorBaru);
+                            cmd.Parameters.AddWithValue("@komen", komenBaru);
+                            cmd.Parameters.AddWithValue("@id", idReview);
+                            cmd.ExecuteNonQuery();
+                        }
+                        MessageBox.Show("Ulasan berhasil diperbarui!", "Update Berhasil");
+                        LoadDataReview();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Gagal update: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvComment.CurrentRow != null)
+            {
+                int idReview = Convert.ToInt32(dgvComment.CurrentRow.Cells["review_id"].Value);
+                string judul = dgvComment.CurrentRow.Cells["Judul Film"].Value.ToString();
+
+                DialogResult konfirmasi = MessageBox.Show($"Yakin mau hapus ulasan film {judul}?",
+                    "Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (konfirmasi == DialogResult.Yes)
+                {
+                    using (SqlConnection conn = KoneksiDB.GetConnection())
+                    {
+                        try
+                        {
+                            conn.Open();
+                            string query = "DELETE FROM Reviews WHERE review_id = @id";
+                            using (SqlCommand cmd = new SqlCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("@id", idReview);
+                                cmd.ExecuteNonQuery();
+                            }
+                            MessageBox.Show("Ulasan terhapus.");
+                            LoadDataReview();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Gagal hapus: " + ex.Message);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
