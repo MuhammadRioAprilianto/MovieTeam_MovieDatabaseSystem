@@ -63,3 +63,42 @@ namespace FormUtamaMovieApp
                 }
             }
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = KoneksiDB.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    string sql = isEdit ?
+                        "UPDATE Movies SET judul=@j, genre_id=@g, durasi=@dur, deskripsi=@d WHERE movie_id=@id" :
+                        "INSERT INTO Movies (judul, genre_id, durasi, deskripsi, is_deleted) VALUES (@j, @g, @dur, @d, 0)";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@j", txtJudul.Text);
+                        cmd.Parameters.AddWithValue("@g", cbGenre.SelectedValue);
+                        cmd.Parameters.AddWithValue("@dur", numDurasi.Value);
+                        cmd.Parameters.AddWithValue("@d", txtDeskripsi.Text);
+                        if (isEdit) cmd.Parameters.AddWithValue("@id", _movieId);
+
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Data Berhasil Disimpan!");
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal menyimpan: " + ex.Message);
+                }
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
+}
