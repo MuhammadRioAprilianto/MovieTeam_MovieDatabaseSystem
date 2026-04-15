@@ -50,3 +50,19 @@ namespace FormUtamaMovieApp
                 }
             }
         }
+
+        private void btnAddMovie_Click(object sender, EventArgs e)
+        {
+            FormDialogMovie frm = new FormDialogMovie();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadKatalogAdmin();
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            LoadKatalogAdmin(txtCariMovie.Text);
+        }
+    }
+}
