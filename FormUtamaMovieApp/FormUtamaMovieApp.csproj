@@ -52,7 +52,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDialogMovie.cs" />
+    <Compile Include="FormDialogMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormDialogMovie.Designer.cs">
       <DependentUpon>FormDialogMovie.cs</DependentUpon>
     </Compile>
