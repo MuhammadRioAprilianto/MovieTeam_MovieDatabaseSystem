@@ -23,3 +23,54 @@ namespace FormUtamaMovieApp
             this.Close();
         }
 
+        private void btnSimpan_Click(object sender, EventArgs e)
+        {
+            if (SesiUser.IdUser == 0)
+            {
+                MessageBox.Show("Sesi berakhir, silakan login ulang.");
+                this.Close();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtKomentar.Text))
+            {
+                MessageBox.Show("Silakan isi komentar kamu terlebih dahulu.");
+                return;
+            }
+
+            using (SqlConnection conn = KoneksiDB.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "INSERT INTO Reviews (user_id, movie_id, skor_rating, komentar, tanggal_diposting) " +
+                                   "VALUES (@uid, @mid, @skor, @komen, GETDATE())";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@uid", SesiUser.IdUser);
+                        cmd.Parameters.AddWithValue("@mid", this.idMoviePilihan);
+                        cmd.Parameters.AddWithValue("@skor", numRating.Value);
+                        cmd.Parameters.AddWithValue("@komen", txtKomentar.Text);
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("Review kamu berhasil disimpan!", "Sukses");
+
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal menyimpan review: " + ex.Message);
+                }
+            }
+        }
+
+        private void FormIsiReview_Load(object sender, EventArgs e)
+        {
+        }
+    }
+}
+
