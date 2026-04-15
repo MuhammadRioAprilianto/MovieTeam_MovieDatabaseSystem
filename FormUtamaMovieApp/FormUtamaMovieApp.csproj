@@ -64,7 +64,9 @@
     <Compile Include="FormIsiReview.Designer.cs">
       <DependentUpon>FormIsiReview.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLogin.cs" />
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
