@@ -73,7 +73,9 @@
     <Compile Include="KoneksiDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UC_AdminDashboard.cs" />
+    <Compile Include="UC_AdminDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UC_AdminDashboard.Designer.cs">
       <DependentUpon>UC_AdminDashboard.cs</DependentUpon>
     </Compile>
