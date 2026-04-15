@@ -39,3 +39,31 @@ namespace FormUtamaMovieApp
                         {
                             cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
                         }
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                UC_MovieItem kartuFilm = new UC_MovieItem();
+                                int id = Convert.ToInt32(reader["movie_id"]);
+                                string judul = reader["judul"].ToString();
+
+                                kartuFilm.SetDataFilm(id, judul);
+
+                                kartuFilm.Width = 200;
+                                kartuFilm.Height = 350;
+                                kartuFilm.Margin = new Padding(10);
+
+                                flpKatalogMovie.Controls.Add(kartuFilm);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Waduh, Error Database: " + ex.Message, "Error");
+                }
+            }
+        }
+    }
+}
