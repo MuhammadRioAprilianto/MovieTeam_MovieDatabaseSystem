@@ -91,7 +91,9 @@
     <Compile Include="UC_KatalogMovie.Designer.cs">
       <DependentUpon>UC_KatalogMovie.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_ManageMovie.cs" />
+    <Compile Include="UC_ManageMovie.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UC_ManageMovie.Designer.cs">
       <DependentUpon>UC_ManageMovie.cs</DependentUpon>
     </Compile>
