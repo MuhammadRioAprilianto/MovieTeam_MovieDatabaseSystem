@@ -94,3 +94,44 @@ namespace FormUtamaMovieApp
                 catch (Exception ex) { MessageBox.Show("Gagal update watchlist: " + ex.Message, "Error"); }
             }
         }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            if (SesiUser.IdUser == 0)
+            {
+                MessageBox.Show("Silakan login untuk memutar film dan mencatat riwayat.", "Akses Ditolak");
+                return;
+            }
+
+            using (SqlConnection conn = KoneksiDB.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "INSERT INTO History (user_id, movie_id, tanggal_nonton) VALUES (@uid, @mid, GETDATE())";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@uid", SesiUser.IdUser);
+                        cmd.Parameters.AddWithValue("@mid", this.idMovie);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex) { Console.WriteLine("Gagal mencatat history: " + ex.Message); }
+            }
+
+            MessageBox.Show($"Memutar film {this.judulMovie}... \n(Simulasi Trailer)", "Memutar Film");
+        }
+
+        private void btnRating_Click(object sender, EventArgs e)
+        {
+            if (SesiUser.IdUser == 0)
+            {
+                MessageBox.Show("Silakan login untuk memberikan ulasan.", "Akses Ditolak");
+                return;
+            }
+
+            FormIsiReview popUp = new FormIsiReview(this.idMovie, this.judulMovie);
+            popUp.ShowDialog();
+        }
+    }
+}
