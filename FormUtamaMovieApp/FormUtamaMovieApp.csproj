@@ -79,7 +79,9 @@
     <Compile Include="UC_AdminDashboard.Designer.cs">
       <DependentUpon>UC_AdminDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_History.cs" />
+    <Compile Include="UC_History.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UC_History.Designer.cs">
       <DependentUpon>UC_History.cs</DependentUpon>
     </Compile>
