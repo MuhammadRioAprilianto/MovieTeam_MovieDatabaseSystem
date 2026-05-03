@@ -39,7 +39,7 @@
             this.btnDeleteHistory.BackColor = System.Drawing.Color.Yellow;
             this.btnDeleteHistory.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteHistory.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnDeleteHistory.Location = new System.Drawing.Point(332, 19);
+            this.btnDeleteHistory.Location = new System.Drawing.Point(433, 39);
             this.btnDeleteHistory.Name = "btnDeleteHistory";
             this.btnDeleteHistory.Size = new System.Drawing.Size(136, 35);
             this.btnDeleteHistory.TabIndex = 8;
@@ -51,7 +51,7 @@
             this.labelDaftarHistory.AutoSize = true;
             this.labelDaftarHistory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDaftarHistory.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.labelDaftarHistory.Location = new System.Drawing.Point(18, 18);
+            this.labelDaftarHistory.Location = new System.Drawing.Point(23, 45);
             this.labelDaftarHistory.Name = "labelDaftarHistory";
             this.labelDaftarHistory.Size = new System.Drawing.Size(177, 32);
             this.labelDaftarHistory.TabIndex = 7;
@@ -59,12 +59,14 @@
             // 
             // dgvHistory
             // 
+            this.dgvHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHistory.Location = new System.Drawing.Point(27, 66);
+            this.dgvHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvHistory.Location = new System.Drawing.Point(20, 80);
             this.dgvHistory.Name = "dgvHistory";
             this.dgvHistory.RowHeadersWidth = 62;
             this.dgvHistory.RowTemplate.Height = 28;
-            this.dgvHistory.Size = new System.Drawing.Size(446, 174);
+            this.dgvHistory.Size = new System.Drawing.Size(552, 281);
             this.dgvHistory.TabIndex = 9;
             // 
             // UC_History
@@ -72,11 +74,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Desktop;
-            this.Controls.Add(this.dgvHistory);
             this.Controls.Add(this.btnDeleteHistory);
             this.Controls.Add(this.labelDaftarHistory);
+            this.Controls.Add(this.dgvHistory);
             this.Name = "UC_History";
-            this.Size = new System.Drawing.Size(497, 262);
+            this.Padding = new System.Windows.Forms.Padding(20, 80, 20, 20);
+            this.Size = new System.Drawing.Size(592, 381);
             this.Load += new System.EventHandler(this.UC_History_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).EndInit();
             this.ResumeLayout(false);

@@ -71,6 +71,11 @@ namespace FormUtamaMovieApp
         private void FormIsiReview_Load(object sender, EventArgs e)
         {
         }
+
+        private void numRating_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

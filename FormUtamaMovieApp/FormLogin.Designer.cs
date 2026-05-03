@@ -150,7 +150,7 @@
             this.txtNamaRegis.Name = "txtNamaRegis";
             this.txtNamaRegis.Size = new System.Drawing.Size(255, 26);
             this.txtNamaRegis.TabIndex = 20;
-            this.txtNamaRegis.TextChanged += new System.EventHandler(this.txtNamaRegis_TextChanged);
+            //this.txtNamaRegis.TextChanged += new System.EventHandler(this.txtNamaRegis_TextChanged);
             // 
             // RegisterToLogin
             // 

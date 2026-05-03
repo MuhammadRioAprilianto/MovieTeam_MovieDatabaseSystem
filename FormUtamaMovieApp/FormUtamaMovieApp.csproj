@@ -52,6 +52,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDetailMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDetailMovie.Designer.cs">
+      <DependentUpon>FormDetailMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDialogMovie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDetailMovie.resx">
+      <DependentUpon>FormDetailMovie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDialogMovie.resx">
       <DependentUpon>FormDialogMovie.cs</DependentUpon>

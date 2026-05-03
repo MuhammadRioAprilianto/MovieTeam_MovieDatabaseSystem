@@ -100,5 +100,10 @@ namespace FormUtamaMovieApp
         {
             this.Close();
         }
+
+        private void numDurasi_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

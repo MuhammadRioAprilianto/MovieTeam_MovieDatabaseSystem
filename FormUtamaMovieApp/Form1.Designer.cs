@@ -38,11 +38,8 @@
             this.btnReview = new System.Windows.Forms.Button();
             this.btnWatchlist = new System.Windows.Forms.Button();
             this.panelContent = new System.Windows.Forms.Panel();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panelHeader.SuspendLayout();
             this.panelSidebar.SuspendLayout();
-            this.panelContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -162,34 +159,11 @@
             // 
             // panelContent
             // 
-            this.panelContent.Controls.Add(this.btnSearch);
-            this.panelContent.Controls.Add(this.textBox1);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Location = new System.Drawing.Point(208, 69);
             this.panelContent.Name = "panelContent";
             this.panelContent.Size = new System.Drawing.Size(592, 381);
             this.panelContent.TabIndex = 4;
-            //this.panelContent.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.Yellow;
-            this.btnSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnSearch.Location = new System.Drawing.Point(354, 5);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(73, 34);
-            this.btnSearch.TabIndex = 4;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(103, 6);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(245, 31);
-            this.textBox1.TabIndex = 3;
             // 
             // FormUtama
             // 
@@ -205,8 +179,6 @@
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.panelSidebar.ResumeLayout(false);
-            this.panelContent.ResumeLayout(false);
-            this.panelContent.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -222,8 +194,6 @@
         private System.Windows.Forms.Button btnReview;
         private System.Windows.Forms.Button btnWatchlist;
         private System.Windows.Forms.Panel panelContent;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnHistory;
     }
 }

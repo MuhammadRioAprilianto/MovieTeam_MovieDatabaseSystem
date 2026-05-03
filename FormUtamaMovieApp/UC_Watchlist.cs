@@ -35,7 +35,8 @@ namespace FormUtamaMovieApp
                         SELECT m.movie_id, m.judul 
                         FROM Watchlists w
                         INNER JOIN Movies m ON w.movie_id = m.movie_id
-                        WHERE w.user_id = @uid";
+                        WHERE w.user_id = @uid
+                          AND m.is_deleted = 0";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -51,8 +52,6 @@ namespace FormUtamaMovieApp
 
                                 kartuFilm.SetDataFilm(id, judul);
 
-                                kartuFilm.Width = 160;
-                                kartuFilm.Height = 240;
                                 kartuFilm.Margin = new Padding(10);
 
                                 flpWatchlist.Controls.Add(kartuFilm);

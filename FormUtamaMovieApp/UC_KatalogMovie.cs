@@ -45,14 +45,13 @@ namespace FormUtamaMovieApp
                             while (reader.Read())
                             {
                                 UC_MovieItem kartuFilm = new UC_MovieItem();
+
                                 int id = Convert.ToInt32(reader["movie_id"]);
                                 string judul = reader["judul"].ToString();
 
                                 kartuFilm.SetDataFilm(id, judul);
 
-                                kartuFilm.Width = 200;
-                                kartuFilm.Height = 350;
-                                kartuFilm.Margin = new Padding(10);
+                                kartuFilm.Margin = new Padding(15);
 
                                 flpKatalogMovie.Controls.Add(kartuFilm);
                             }
@@ -64,6 +63,31 @@ namespace FormUtamaMovieApp
                     MessageBox.Show("Waduh, Error Database: " + ex.Message, "Error");
                 }
             }
+        }
+
+        private void labelDaftarMovie_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string keyword = txtSearch.Text.Trim();
+            LoadDataKatalog(keyword);
+        }
+
+        private void txtSearch_TextChanged(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSearch.PerformClick();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

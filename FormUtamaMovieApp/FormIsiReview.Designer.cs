@@ -41,7 +41,7 @@
             this.lblJudulFilm.AutoSize = true;
             this.lblJudulFilm.Font = new System.Drawing.Font("Impact", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblJudulFilm.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.lblJudulFilm.Location = new System.Drawing.Point(382, 68);
+            this.lblJudulFilm.Location = new System.Drawing.Point(182, 52);
             this.lblJudulFilm.Name = "lblJudulFilm";
             this.lblJudulFilm.Size = new System.Drawing.Size(74, 35);
             this.lblJudulFilm.TabIndex = 0;
@@ -50,9 +50,15 @@
             // numRating
             // 
             this.numRating.Location = new System.Drawing.Point(136, 145);
+            this.numRating.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.numRating.Name = "numRating";
             this.numRating.Size = new System.Drawing.Size(120, 26);
             this.numRating.TabIndex = 1;
+            this.numRating.ValueChanged += new System.EventHandler(this.numRating_ValueChanged);
             // 
             // txtKomentar
             // 

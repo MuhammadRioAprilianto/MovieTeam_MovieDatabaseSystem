@@ -15,7 +15,6 @@ namespace FormUtamaMovieApp
         {
             InitializeComponent();
             btnPlay.Click += btnPlay_Click;
-            btnRating.Click += btnRating_Click;
             btnWatchlistToggle.Click += btnWatchlistToggle_Click;
         }
 
@@ -102,7 +101,6 @@ namespace FormUtamaMovieApp
                 MessageBox.Show("Silakan login untuk memutar film dan mencatat riwayat.", "Akses Ditolak");
                 return;
             }
-
             using (SqlConnection conn = KoneksiDB.GetConnection())
             {
                 try
@@ -116,22 +114,19 @@ namespace FormUtamaMovieApp
                         cmd.ExecuteNonQuery();
                     }
                 }
-                catch (Exception ex) { Console.WriteLine("Gagal mencatat history: " + ex.Message); }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal mencatat history: " + ex.Message);
+                }
             }
 
-            MessageBox.Show($"Memutar film {this.judulMovie}... \n(Simulasi Trailer)", "Memutar Film");
+            FormDetailMovie frmDetail = new FormDetailMovie(this.idMovie);
+            frmDetail.ShowDialog();
         }
 
-        private void btnRating_Click(object sender, EventArgs e)
+        private void lblJudulMovie_Click(object sender, EventArgs e)
         {
-            if (SesiUser.IdUser == 0)
-            {
-                MessageBox.Show("Silakan login untuk memberikan ulasan.", "Akses Ditolak");
-                return;
-            }
 
-            FormIsiReview popUp = new FormIsiReview(this.idMovie, this.judulMovie);
-            popUp.ShowDialog();
         }
     }
 }

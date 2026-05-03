@@ -60,9 +60,15 @@
             // numDurasi
             // 
             this.numDurasi.Location = new System.Drawing.Point(239, 153);
+            this.numDurasi.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numDurasi.Name = "numDurasi";
             this.numDurasi.Size = new System.Drawing.Size(120, 26);
             this.numDurasi.TabIndex = 2;
+            this.numDurasi.ValueChanged += new System.EventHandler(this.numDurasi_ValueChanged);
             // 
             // txtDeskripsi
             // 
