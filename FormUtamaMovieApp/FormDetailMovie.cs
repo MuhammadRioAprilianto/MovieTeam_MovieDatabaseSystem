@@ -46,7 +46,8 @@ namespace FormUtamaMovieApp
                 try
                 {
                     conn.Open();
-                    string query = "SELECT judul, deskripsi FROM Movies WHERE movie_id = @id";
+
+                    string query = "SELECT judul, deskripsi FROM vwMovieDetail WHERE movie_id = @id";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -58,12 +59,10 @@ namespace FormUtamaMovieApp
                             {
                                 lblJudulFilm.Text = reader["judul"].ToString().ToUpper();
                                 txtDeskripsi.Text = reader["deskripsi"].ToString();
-
-                                Console.WriteLine("Data Berhasil di-Update ke UI");
                             }
                             else
                             {
-                                MessageBox.Show("Data tidak ditemukan di database untuk ID: " + _movieId);
+                                MessageBox.Show("Data tidak ditemukan.");
                                 this.Close();
                             }
                         }
@@ -84,7 +83,6 @@ namespace FormUtamaMovieApp
                 return;
             }
 
-            // Buka form review
             FormIsiReview popUp = new FormIsiReview(this._movieId, lblJudulFilm.Text);
             popUp.ShowDialog();
         }

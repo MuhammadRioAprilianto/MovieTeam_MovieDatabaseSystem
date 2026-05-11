@@ -27,7 +27,7 @@ namespace FormUtamaMovieApp
                 try
                 {
                     conn.Open();
-                    // Poin 2: Menggunakan VIEW vwHistory
+
                     string query = "SELECT * FROM vwHistory WHERE user_id = @uid ORDER BY [Waktu Menonton] DESC";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -39,7 +39,7 @@ namespace FormUtamaMovieApp
 
                         dgvHistory.DataSource = dt;
 
-                        // Sembunyikan kolom ID dan User ID
+
                         if (dgvHistory.Columns["history_id"] != null) dgvHistory.Columns["history_id"].Visible = false;
                         if (dgvHistory.Columns["user_id"] != null) dgvHistory.Columns["user_id"].Visible = false;
 
