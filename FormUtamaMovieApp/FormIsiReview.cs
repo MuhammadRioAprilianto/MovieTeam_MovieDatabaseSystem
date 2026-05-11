@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -43,14 +44,14 @@ namespace FormUtamaMovieApp
                 try
                 {
                     conn.Open();
-                    string query = "INSERT INTO Reviews (user_id, movie_id, skor_rating, komentar, tanggal_diposting) " +
-                                   "VALUES (@uid, @mid, @skor, @komen, GETDATE())";
 
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (SqlCommand cmd = new SqlCommand("sp_InsertReview", conn))
                     {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
                         cmd.Parameters.AddWithValue("@uid", SesiUser.IdUser);
                         cmd.Parameters.AddWithValue("@mid", this.idMoviePilihan);
-                        cmd.Parameters.AddWithValue("@skor", numRating.Value);
+                        cmd.Parameters.AddWithValue("@skor", (int)numRating.Value);
                         cmd.Parameters.AddWithValue("@komen", txtKomentar.Text);
 
                         cmd.ExecuteNonQuery();
@@ -60,6 +61,10 @@ namespace FormUtamaMovieApp
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Gagal menyimpan: " + ex.Message, "Pesan Database");
                 }
                 catch (Exception ex)
                 {
