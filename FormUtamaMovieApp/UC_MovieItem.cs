@@ -35,11 +35,13 @@ namespace FormUtamaMovieApp
                 try
                 {
                     conn.Open();
-                    string query = "SELECT COUNT(*) FROM Watchlists WHERE user_id=@uid AND movie_id=@mid";
+                    string query = "SELECT COUNT(*) FROM vwCheckWatchlist WHERE user_id=@uid AND movie_id=@mid";
+
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@uid", SesiUser.IdUser);
                         cmd.Parameters.AddWithValue("@mid", this.idMovie);
+
                         int count = (int)cmd.ExecuteScalar();
                         isInWatchlist = count > 0;
                         UpdateTampilanTombolWatchlist();
