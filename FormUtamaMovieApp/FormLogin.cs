@@ -37,7 +37,7 @@ namespace FormUtamaMovieApp
         {
             if (string.IsNullOrWhiteSpace(txtUsernameLogin.Text) || string.IsNullOrWhiteSpace(txtPasswordLogin.Text))
             {
-                MessageBox.Show("Isi dulu bos, jangan dikosongin!", "Peringatan");
+                MessageBox.Show("username tidak boleh dikosongi!", "Peringatan");
                 return;
             }
 
@@ -69,28 +69,23 @@ namespace FormUtamaMovieApp
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show(ex.Message, "Gagal Login"); // Pesan dari RAISERROR
+                    MessageBox.Show(ex.Message, "Gagal Login");
                 }
             }
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNamaRegis.Text) || string.IsNullOrWhiteSpace(txtUserRegis.Text) || string.IsNullOrWhiteSpace(txtPasswordRegis.Text))
-            {
-                MessageBox.Show("Semua kolom (Nama, Username, Password) wajib diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            if (string.IsNullOrWhiteSpace(txtNamaRegis.Text) || string.IsNullOrWhiteSpace(txtUserRegis.Text) || string.IsNullOrWhiteSpace(txtPasswordRegis.Text)) return;
 
             using (SqlConnection conn = KoneksiDB.GetConnection())
             {
                 try
                 {
                     conn.Open();
-                    string query = "INSERT INTO Accounts (role_id, username, password, nama) VALUES (2, @user, @pass, @nama)";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (SqlCommand cmd = new SqlCommand("sp_RegisterAccount", conn))
                     {
+                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@nama", txtNamaRegis.Text);
                         cmd.Parameters.AddWithValue("@user", txtUserRegis.Text);
                         cmd.Parameters.AddWithValue("@pass", txtPasswordRegis.Text);
@@ -98,24 +93,13 @@ namespace FormUtamaMovieApp
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Akun berhasil dibuat! Silakan Login.", "Sukses");
 
-                        txtNamaRegis.Clear();
-                        txtUserRegis.Clear();
-                        txtPasswordRegis.Clear();
-
                         panelLogin.Visible = true;
                         panel1.Visible = false;
                     }
                 }
-                catch (Exception ex)
+                catch (SqlException ex)
                 {
-                    if (ex.Message.Contains("UNIQUE KEY") || ex.Message.Contains("duplicate key"))
-                    {
-                        MessageBox.Show("Username tersebut sudah digunakan.", "Gagal Daftar");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Gagal Daftar: " + ex.Message);
-                    }
+                    MessageBox.Show(ex.Message, "Gagal Daftar");
                 }
             }
         }
