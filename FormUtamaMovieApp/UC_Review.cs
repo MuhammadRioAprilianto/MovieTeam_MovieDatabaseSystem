@@ -61,16 +61,21 @@ namespace FormUtamaMovieApp
                     try
                     {
                         conn.Open();
-                        string query = "UPDATE Reviews SET skor_rating = @skor, komentar = @komen WHERE review_id = @id";
-                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        using (SqlCommand cmd = new SqlCommand("sp_UpdateReview", conn))
                         {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@id", idReview);
                             cmd.Parameters.AddWithValue("@skor", skorBaru);
                             cmd.Parameters.AddWithValue("@komen", komenBaru);
-                            cmd.Parameters.AddWithValue("@id", idReview);
+
                             cmd.ExecuteNonQuery();
                         }
                         MessageBox.Show("Ulasan berhasil diperbarui!", "Update Berhasil");
                         LoadDataReview();
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Kesalahan Database: " + ex.Message, "Error");
                     }
                     catch (Exception ex)
                     {
