@@ -24,7 +24,6 @@ namespace FormUtamaMovieApp
                     using (SqlCommand cmd = new SqlCommand("sp_SearchMovie", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
                         cmd.Parameters.AddWithValue("@keyword", keyword);
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -32,10 +31,10 @@ namespace FormUtamaMovieApp
                             while (reader.Read())
                             {
                                 UC_MovieItem kartuFilm = new UC_MovieItem();
-                                int id = Convert.ToInt32(reader["movie_id"]);
-                                string judul = reader["judul"].ToString();
-
-                                kartuFilm.SetDataFilm(id, judul);
+                                kartuFilm.SetDataFilm(
+                                    Convert.ToInt32(reader["movie_id"]),
+                                    reader["judul"].ToString()
+                                );
                                 kartuFilm.Margin = new Padding(15);
                                 flpKatalogMovie.Controls.Add(kartuFilm);
                             }
@@ -49,15 +48,9 @@ namespace FormUtamaMovieApp
             }
         }
 
-        private void labelDaftarMovie_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string keyword = txtSearch.Text.Trim();
-            LoadDataKatalog(keyword);
+            LoadDataKatalog(txtSearch.Text.Trim());
         }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
@@ -67,11 +60,6 @@ namespace FormUtamaMovieApp
                 btnSearch.PerformClick();
                 e.SuppressKeyPress = true;
             }
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
