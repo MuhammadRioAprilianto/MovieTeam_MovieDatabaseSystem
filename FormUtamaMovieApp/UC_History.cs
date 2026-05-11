@@ -27,33 +27,28 @@ namespace FormUtamaMovieApp
                 try
                 {
                     conn.Open();
-                    string query = @"SELECT h.history_id, m.judul AS 'Judul Film', h.tanggal_nonton AS 'Waktu Menonton'
-                                     FROM History h
-                                     JOIN Movies m ON h.movie_id = m.movie_id
-                                     WHERE h.user_id = @uid
-                                     ORDER BY h.tanggal_nonton DESC";
+                    // Poin 2: Menggunakan VIEW vwHistory
+                    string query = "SELECT * FROM vwHistory WHERE user_id = @uid ORDER BY [Waktu Menonton] DESC";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@uid", SesiUser.IdUser);
-
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
                         dgvHistory.DataSource = dt;
 
-                        if (dgvHistory.Columns["history_id"] != null)
-                        {
-                            dgvHistory.Columns["history_id"].Visible = false;
-                        }
+                        // Sembunyikan kolom ID dan User ID
+                        if (dgvHistory.Columns["history_id"] != null) dgvHistory.Columns["history_id"].Visible = false;
+                        if (dgvHistory.Columns["user_id"] != null) dgvHistory.Columns["user_id"].Visible = false;
 
                         dgvHistory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Gagal memuat history: " + ex.Message, "Error Database");
+                    MessageBox.Show("Gagal memuat history: " + ex.Message);
                 }
             }
         }
