@@ -26,33 +26,22 @@ namespace FormUtamaMovieApp
                 try
                 {
                     conn.Open();
-                    string query = "SELECT movie_id, judul FROM Movies WHERE is_deleted = 0";
-
-                    if (!string.IsNullOrEmpty(keyword))
+                    using (SqlCommand cmd = new SqlCommand("sp_SearchMovie", conn))
                     {
-                        query += " AND judul LIKE @keyword";
-                    }
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        if (!string.IsNullOrEmpty(keyword))
-                        {
-                            cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
-                        }
+                        cmd.Parameters.AddWithValue("@keyword", keyword);
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
                             {
                                 UC_MovieItem kartuFilm = new UC_MovieItem();
-
                                 int id = Convert.ToInt32(reader["movie_id"]);
                                 string judul = reader["judul"].ToString();
 
                                 kartuFilm.SetDataFilm(id, judul);
-
                                 kartuFilm.Margin = new Padding(15);
-
                                 flpKatalogMovie.Controls.Add(kartuFilm);
                             }
                         }
@@ -60,7 +49,7 @@ namespace FormUtamaMovieApp
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Waduh, Error Database: " + ex.Message, "Error");
+                    MessageBox.Show("Error: " + ex.Message);
                 }
             }
         }
@@ -76,7 +65,7 @@ namespace FormUtamaMovieApp
             LoadDataKatalog(keyword);
         }
 
-        private void txtSearch_TextChanged(object sender, KeyEventArgs e)
+        private void txtSearch_TextChange(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
