@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -36,8 +37,8 @@ namespace FormUtamaMovieApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show($"Yakin ingin menghapus film '{_judul}'?",
-                              "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult dr = MessageBox.Show($"Yakin ingin menghapus film '{_judul}'?\nSemua review dan riwayat terkait film ini juga akan terhapus.",
+                        "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (dr == DialogResult.Yes)
             {
@@ -46,21 +47,22 @@ namespace FormUtamaMovieApp
                     try
                     {
                         conn.Open();
-                        string query = "UPDATE Movies SET is_deleted = 1 WHERE movie_id = @id";
 
-                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        using (SqlCommand cmd = new SqlCommand("sp_DeleteMovie", conn))
                         {
+                            cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.AddWithValue("@id", _movieId);
+
                             cmd.ExecuteNonQuery();
 
-                            MessageBox.Show("Film berhasil dihapus dari katalog.");
+                            MessageBox.Show("Film dan seluruh data terkait berhasil dihapus.");
 
                             this.Parent.Controls.Remove(this);
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Gagal menghapus: " + ex.Message);
+                        MessageBox.Show("Gagal menghapus: " + ex.Message, "Error");
                     }
                 }
             }
