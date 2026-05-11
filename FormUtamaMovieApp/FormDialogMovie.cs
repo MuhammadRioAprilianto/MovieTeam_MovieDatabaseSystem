@@ -71,20 +71,25 @@ namespace FormUtamaMovieApp
                 try
                 {
                     conn.Open();
-                    string sql = isEdit ?
-                        "UPDATE Movies SET judul=@j, genre_id=@g, durasi=@dur, deskripsi=@d WHERE movie_id=@id" :
-                        "INSERT INTO Movies (judul, genre_id, durasi, deskripsi, is_deleted) VALUES (@j, @g, @dur, @d, 0)";
 
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    string spName = isEdit ? "sp_UpdateMovie" : "sp_InsertMovie";
+
+                    using (SqlCommand cmd = new SqlCommand(spName, conn))
                     {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
                         cmd.Parameters.AddWithValue("@j", txtJudul.Text);
                         cmd.Parameters.AddWithValue("@g", cbGenre.SelectedValue);
                         cmd.Parameters.AddWithValue("@dur", numDurasi.Value);
                         cmd.Parameters.AddWithValue("@d", txtDeskripsi.Text);
-                        if (isEdit) cmd.Parameters.AddWithValue("@id", _movieId);
+
+                        if (isEdit)
+                        {
+                            cmd.Parameters.AddWithValue("@id", _movieId);
+                        }
 
                         cmd.ExecuteNonQuery();
-                        MessageBox.Show("Data Berhasil Disimpan!");
+                        MessageBox.Show("Data Berhasil Disimpan!", "Sukses");
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
