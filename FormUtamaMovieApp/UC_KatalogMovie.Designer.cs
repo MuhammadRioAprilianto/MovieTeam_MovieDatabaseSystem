@@ -52,7 +52,7 @@
             this.labelDaftarMovie.Size = new System.Drawing.Size(164, 32);
             this.labelDaftarMovie.TabIndex = 1;
             this.labelDaftarMovie.Text = "Daftar Movie";
-            this.labelDaftarMovie.Click += new System.EventHandler(this.labelDaftarMovie_Click);
+            //this.labelDaftarMovie.Click += new System.EventHandler(this.labelDaftarMovie_Click);
             // 
             // panelHeader
             // 
@@ -111,7 +111,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(552, 295);
             this.panel3.TabIndex = 0;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            //this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // flpKatalogMovie
             // 
