@@ -50,12 +50,17 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.movieDBDataSet = new FormUtamaMovieApp.MovieDBDataSet();
+            this.reviewsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reviewsTableAdapter = new FormUtamaMovieApp.MovieDBDataSetTableAdapters.ReviewsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dgvComment)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRating)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.movieDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reviewsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDeleteComment
@@ -129,6 +134,7 @@
             // 
             // txtKomentar
             // 
+            this.txtKomentar.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.reviewsBindingSource, "komentar", true));
             this.txtKomentar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKomentar.Location = new System.Drawing.Point(279, 3);
             this.txtKomentar.Multiline = true;
@@ -138,6 +144,7 @@
             // 
             // numRating
             // 
+            this.numRating.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.reviewsBindingSource, "skor_rating", true));
             this.numRating.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.numRating.Location = new System.Drawing.Point(3, 25);
             this.numRating.Name = "numRating";
@@ -280,6 +287,20 @@
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(34, 38);
             this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
+            // movieDBDataSet
+            // 
+            this.movieDBDataSet.DataSetName = "MovieDBDataSet";
+            this.movieDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // reviewsBindingSource
+            // 
+            this.reviewsBindingSource.DataMember = "Reviews";
+            this.reviewsBindingSource.DataSource = this.movieDBDataSet;
+            // 
+            // reviewsTableAdapter
+            // 
+            this.reviewsTableAdapter.ClearBeforeFill = true;
+            // 
             // UC_Review
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -299,6 +320,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.movieDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reviewsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -325,5 +348,8 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.BindingSource reviewsBindingSource;
+        private MovieDBDataSet movieDBDataSet;
+        private MovieDBDataSetTableAdapters.ReviewsTableAdapter reviewsTableAdapter;
     }
 }

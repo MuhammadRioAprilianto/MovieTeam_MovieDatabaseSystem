@@ -77,6 +77,11 @@
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="KoneksiDB.cs" />
+    <Compile Include="MovieDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MovieDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UC_AdminDashboard.cs">
@@ -175,6 +180,17 @@
     <EmbeddedResource Include="UC_Watchlist.resx">
       <DependentUpon>UC_Watchlist.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="MovieDBDataSet.xsc">
+      <DependentUpon>MovieDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MovieDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MovieDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MovieDBDataSet.xss">
+      <DependentUpon>MovieDBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

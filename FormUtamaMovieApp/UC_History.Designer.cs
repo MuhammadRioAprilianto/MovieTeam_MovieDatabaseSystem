@@ -28,10 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnDeleteHistory = new System.Windows.Forms.Button();
             this.labelDaftarHistory = new System.Windows.Forms.Label();
             this.dgvHistory = new System.Windows.Forms.DataGridView();
+            this.movieDBDataSet = new FormUtamaMovieApp.MovieDBDataSet();
+            this.historyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.historyTableAdapter = new FormUtamaMovieApp.MovieDBDataSetTableAdapters.HistoryTableAdapter();
+            this.historyidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.useridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.movieidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tanggalnontonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movieDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.historyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDeleteHistory
@@ -59,8 +69,15 @@
             // 
             // dgvHistory
             // 
+            this.dgvHistory.AutoGenerateColumns = false;
             this.dgvHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.historyidDataGridViewTextBoxColumn,
+            this.useridDataGridViewTextBoxColumn,
+            this.movieidDataGridViewTextBoxColumn,
+            this.tanggalnontonDataGridViewTextBoxColumn});
+            this.dgvHistory.DataSource = this.historyBindingSource;
             this.dgvHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvHistory.Location = new System.Drawing.Point(20, 80);
             this.dgvHistory.Name = "dgvHistory";
@@ -68,6 +85,49 @@
             this.dgvHistory.RowTemplate.Height = 28;
             this.dgvHistory.Size = new System.Drawing.Size(552, 281);
             this.dgvHistory.TabIndex = 9;
+            // 
+            // movieDBDataSet
+            // 
+            this.movieDBDataSet.DataSetName = "MovieDBDataSet";
+            this.movieDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // historyBindingSource
+            // 
+            this.historyBindingSource.DataMember = "History";
+            this.historyBindingSource.DataSource = this.movieDBDataSet;
+            // 
+            // historyTableAdapter
+            // 
+            this.historyTableAdapter.ClearBeforeFill = true;
+            // 
+            // historyidDataGridViewTextBoxColumn
+            // 
+            this.historyidDataGridViewTextBoxColumn.DataPropertyName = "history_id";
+            this.historyidDataGridViewTextBoxColumn.HeaderText = "history_id";
+            this.historyidDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.historyidDataGridViewTextBoxColumn.Name = "historyidDataGridViewTextBoxColumn";
+            this.historyidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // useridDataGridViewTextBoxColumn
+            // 
+            this.useridDataGridViewTextBoxColumn.DataPropertyName = "user_id";
+            this.useridDataGridViewTextBoxColumn.HeaderText = "user_id";
+            this.useridDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.useridDataGridViewTextBoxColumn.Name = "useridDataGridViewTextBoxColumn";
+            // 
+            // movieidDataGridViewTextBoxColumn
+            // 
+            this.movieidDataGridViewTextBoxColumn.DataPropertyName = "movie_id";
+            this.movieidDataGridViewTextBoxColumn.HeaderText = "movie_id";
+            this.movieidDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.movieidDataGridViewTextBoxColumn.Name = "movieidDataGridViewTextBoxColumn";
+            // 
+            // tanggalnontonDataGridViewTextBoxColumn
+            // 
+            this.tanggalnontonDataGridViewTextBoxColumn.DataPropertyName = "tanggal_nonton";
+            this.tanggalnontonDataGridViewTextBoxColumn.HeaderText = "tanggal_nonton";
+            this.tanggalnontonDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.tanggalnontonDataGridViewTextBoxColumn.Name = "tanggalnontonDataGridViewTextBoxColumn";
             // 
             // UC_History
             // 
@@ -82,6 +142,8 @@
             this.Size = new System.Drawing.Size(592, 381);
             this.Load += new System.EventHandler(this.UC_History_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movieDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.historyBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -92,5 +154,12 @@
         private System.Windows.Forms.Button btnDeleteHistory;
         private System.Windows.Forms.Label labelDaftarHistory;
         private System.Windows.Forms.DataGridView dgvHistory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn historyidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn useridDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn movieidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tanggalnontonDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource historyBindingSource;
+        private MovieDBDataSet movieDBDataSet;
+        private MovieDBDataSetTableAdapters.HistoryTableAdapter historyTableAdapter;
     }
 }

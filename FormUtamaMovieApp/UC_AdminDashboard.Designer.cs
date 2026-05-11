@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgvAktivitasReview = new System.Windows.Forms.DataGridView();
             this.dgvTrendWatchlist = new System.Windows.Forms.DataGridView();
             this.dgvDemografiGenre = new System.Windows.Forms.DataGridView();
@@ -36,6 +37,9 @@
             this.panelWatchlist = new System.Windows.Forms.Panel();
             this.panelGenre = new System.Windows.Forms.Panel();
             this.panelReview = new System.Windows.Forms.Panel();
+            this.movieDBDataSet = new FormUtamaMovieApp.MovieDBDataSet();
+            this.watchlistsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.watchlistsTableAdapter = new FormUtamaMovieApp.MovieDBDataSetTableAdapters.WatchlistsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAktivitasReview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrendWatchlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDemografiGenre)).BeginInit();
@@ -43,6 +47,8 @@
             this.panelWatchlist.SuspendLayout();
             this.panelGenre.SuspendLayout();
             this.panelReview.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.movieDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.watchlistsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvAktivitasReview
@@ -134,6 +140,20 @@
             this.panelReview.Size = new System.Drawing.Size(546, 135);
             this.panelReview.TabIndex = 2;
             // 
+            // movieDBDataSet
+            // 
+            this.movieDBDataSet.DataSetName = "MovieDBDataSet";
+            this.movieDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // watchlistsBindingSource
+            // 
+            this.watchlistsBindingSource.DataMember = "Watchlists";
+            this.watchlistsBindingSource.DataSource = this.movieDBDataSet;
+            // 
+            // watchlistsTableAdapter
+            // 
+            this.watchlistsTableAdapter.ClearBeforeFill = true;
+            // 
             // UC_AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -151,6 +171,8 @@
             this.panelWatchlist.ResumeLayout(false);
             this.panelGenre.ResumeLayout(false);
             this.panelReview.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.movieDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.watchlistsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,5 +188,8 @@
         private System.Windows.Forms.Panel panelWatchlist;
         private System.Windows.Forms.Panel panelGenre;
         private System.Windows.Forms.Panel panelReview;
+        private System.Windows.Forms.BindingSource watchlistsBindingSource;
+        private MovieDBDataSet movieDBDataSet;
+        private MovieDBDataSetTableAdapters.WatchlistsTableAdapter watchlistsTableAdapter;
     }
 }
