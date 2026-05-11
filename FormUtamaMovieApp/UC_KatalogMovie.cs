@@ -12,11 +12,6 @@ namespace FormUtamaMovieApp
             LoadDataKatalog();
         }
 
-        private void UC_KatalogMovie_Load(object sender, EventArgs e)
-        {
-            LoadDataKatalog();
-        }
-
         public void LoadDataKatalog(string keyword = "")
         {
             flpKatalogMovie.Controls.Clear();
@@ -65,7 +60,7 @@ namespace FormUtamaMovieApp
             LoadDataKatalog(keyword);
         }
 
-        private void txtSearch_TextChange(object sender, KeyEventArgs e)
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
