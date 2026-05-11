@@ -33,11 +33,11 @@
             this.btnUpdateComment = new System.Windows.Forms.Button();
             this.labelReview = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.txtKomentar = new System.Windows.Forms.TextBox();
+            this.numDurasi = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvComment)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDurasi)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDeleteComment
@@ -63,6 +63,7 @@
             this.dgvComment.RowTemplate.Height = 28;
             this.dgvComment.Size = new System.Drawing.Size(546, 208);
             this.dgvComment.TabIndex = 9;
+            this.dgvComment.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvComment_CellContentClick);
             // 
             // btnUpdateComment
             // 
@@ -93,8 +94,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.dgvComment, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtKomentar, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.numDurasi, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 80);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -104,22 +105,22 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(552, 281);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
-            // textBox1
+            // txtKomentar
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(279, 3);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(270, 61);
-            this.textBox1.TabIndex = 10;
+            this.txtKomentar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKomentar.Location = new System.Drawing.Point(279, 3);
+            this.txtKomentar.Multiline = true;
+            this.txtKomentar.Name = "txtKomentar";
+            this.txtKomentar.Size = new System.Drawing.Size(270, 61);
+            this.txtKomentar.TabIndex = 10;
             // 
-            // numericUpDown1
+            // numDurasi
             // 
-            this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.numericUpDown1.Location = new System.Drawing.Point(3, 38);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(270, 26);
-            this.numericUpDown1.TabIndex = 11;
+            this.numDurasi.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.numDurasi.Location = new System.Drawing.Point(3, 38);
+            this.numDurasi.Name = "numDurasi";
+            this.numDurasi.Size = new System.Drawing.Size(270, 26);
+            this.numDurasi.TabIndex = 11;
             // 
             // UC_Review
             // 
@@ -136,7 +137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvComment)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDurasi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,7 +150,7 @@
         private System.Windows.Forms.Button btnUpdateComment;
         private System.Windows.Forms.Label labelReview;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.TextBox txtKomentar;
+        private System.Windows.Forms.NumericUpDown numDurasi;
     }
 }
