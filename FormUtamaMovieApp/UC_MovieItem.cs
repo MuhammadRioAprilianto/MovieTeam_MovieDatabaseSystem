@@ -76,17 +76,17 @@ namespace FormUtamaMovieApp
                 try
                 {
                     conn.Open();
-                    string query = isInWatchlist ?
-                        "DELETE FROM Watchlists WHERE user_id=@uid AND movie_id=@mid" :
-                        "INSERT INTO Watchlists (user_id, movie_id) VALUES (@uid, @mid)";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    // Panggil Stored Procedure sp_ToggleWatchlist
+                    using (SqlCommand cmd = new SqlCommand("sp_ToggleWatchlist", conn))
                     {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@uid", SesiUser.IdUser);
                         cmd.Parameters.AddWithValue("@mid", this.idMovie);
+
                         cmd.ExecuteNonQuery();
                     }
 
+                    // Update status di UI
                     isInWatchlist = !isInWatchlist;
                     UpdateTampilanTombolWatchlist();
                 }
