@@ -55,9 +55,9 @@ namespace FormUtamaMovieApp
 
         private void btnDeleteHistory_Click(object sender, EventArgs e)
         {
-            if (dgvHistory.SelectedRows.Count > 0)
+            if (dgvHistory.CurrentRow != null)
             {
-                int idHistoryTerpilih = Convert.ToInt32(dgvHistory.SelectedRows[0].Cells["history_id"].Value);
+                int idHistoryTerpilih = Convert.ToInt32(dgvHistory.CurrentRow.Cells["history_id"].Value);
 
                 DialogResult dialog = MessageBox.Show("Yakin ingin menghapus film ini dari riwayat tontonan?", "Hapus History", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
@@ -68,9 +68,9 @@ namespace FormUtamaMovieApp
                         try
                         {
                             conn.Open();
-                            string query = "DELETE FROM History WHERE history_id = @hid";
-                            using (SqlCommand cmd = new SqlCommand(query, conn))
+                            using (SqlCommand cmd = new SqlCommand("sp_DeleteHistory", conn))
                             {
+                                cmd.CommandType = CommandType.StoredProcedure;
                                 cmd.Parameters.AddWithValue("@hid", idHistoryTerpilih);
                                 cmd.ExecuteNonQuery();
                             }
@@ -80,14 +80,14 @@ namespace FormUtamaMovieApp
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Gagal menghapus data: " + ex.Message, "Error");
+                            MessageBox.Show("Gagal menghapus: " + ex.Message);
                         }
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Silakan klik salah satu film di tabel terlebih dahulu sebelum menghapus.", "Pilih Data");
+                MessageBox.Show("Silakan pilih data di tabel terlebih dahulu.");
             }
         }
     }
