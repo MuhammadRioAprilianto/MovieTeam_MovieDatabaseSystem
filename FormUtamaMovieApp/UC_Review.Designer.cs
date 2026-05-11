@@ -29,11 +29,15 @@
         private void InitializeComponent()
         {
             this.btnDeleteComment = new System.Windows.Forms.Button();
-            this.labelDaftarReview = new System.Windows.Forms.Label();
             this.dgvComment = new System.Windows.Forms.DataGridView();
             this.btnUpdateComment = new System.Windows.Forms.Button();
             this.labelReview = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvComment)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDeleteComment
@@ -48,27 +52,16 @@
             this.btnDeleteComment.Text = "delete";
             this.btnDeleteComment.UseVisualStyleBackColor = false;
             // 
-            // labelDaftarReview
-            // 
-            this.labelDaftarReview.AutoSize = true;
-            this.labelDaftarReview.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDaftarReview.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.labelDaftarReview.Location = new System.Drawing.Point(38, 98);
-            this.labelDaftarReview.Name = "labelDaftarReview";
-            this.labelDaftarReview.Size = new System.Drawing.Size(173, 32);
-            this.labelDaftarReview.TabIndex = 7;
-            this.labelDaftarReview.Text = "Daftar Review";
-            // 
             // dgvComment
             // 
             this.dgvComment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvComment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvComment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvComment.Location = new System.Drawing.Point(20, 80);
+            this.tableLayoutPanel1.SetColumnSpan(this.dgvComment, 2);
+            this.dgvComment.Location = new System.Drawing.Point(3, 70);
             this.dgvComment.Name = "dgvComment";
             this.dgvComment.RowHeadersWidth = 62;
             this.dgvComment.RowTemplate.Height = 28;
-            this.dgvComment.Size = new System.Drawing.Size(552, 281);
+            this.dgvComment.Size = new System.Drawing.Size(546, 208);
             this.dgvComment.TabIndex = 9;
             // 
             // btnUpdateComment
@@ -94,20 +87,56 @@
             this.labelReview.TabIndex = 11;
             this.labelReview.Text = "Daftar Review";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.dgvComment, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.numericUpDown1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 80);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.84342F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.15659F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(552, 281);
+            this.tableLayoutPanel1.TabIndex = 12;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(279, 3);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(270, 61);
+            this.textBox1.TabIndex = 10;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.numericUpDown1.Location = new System.Drawing.Point(3, 38);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(270, 26);
+            this.numericUpDown1.TabIndex = 11;
+            // 
             // UC_Review
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Desktop;
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.labelReview);
             this.Controls.Add(this.btnUpdateComment);
-            this.Controls.Add(this.dgvComment);
             this.Controls.Add(this.btnDeleteComment);
-            this.Controls.Add(this.labelDaftarReview);
             this.Name = "UC_Review";
             this.Padding = new System.Windows.Forms.Padding(20, 80, 20, 20);
             this.Size = new System.Drawing.Size(592, 381);
             ((System.ComponentModel.ISupportInitialize)(this.dgvComment)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,9 +145,11 @@
         #endregion
 
         private System.Windows.Forms.Button btnDeleteComment;
-        private System.Windows.Forms.Label labelDaftarReview;
         private System.Windows.Forms.DataGridView dgvComment;
         private System.Windows.Forms.Button btnUpdateComment;
         private System.Windows.Forms.Label labelReview;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
