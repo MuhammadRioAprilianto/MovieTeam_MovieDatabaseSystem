@@ -101,16 +101,19 @@ namespace FormUtamaMovieApp
                 MessageBox.Show("Silakan login untuk memutar film dan mencatat riwayat.", "Akses Ditolak");
                 return;
             }
+
             using (SqlConnection conn = KoneksiDB.GetConnection())
             {
                 try
                 {
                     conn.Open();
-                    string query = "INSERT INTO History (user_id, movie_id, tanggal_nonton) VALUES (@uid, @mid, GETDATE())";
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    // Panggil Stored Procedure sp_RecordHistory
+                    using (SqlCommand cmd = new SqlCommand("sp_RecordHistory", conn))
                     {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@uid", SesiUser.IdUser);
                         cmd.Parameters.AddWithValue("@mid", this.idMovie);
+
                         cmd.ExecuteNonQuery();
                     }
                 }
