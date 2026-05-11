@@ -102,18 +102,20 @@ namespace FormUtamaMovieApp
                         try
                         {
                             conn.Open();
-                            string query = "DELETE FROM Reviews WHERE review_id = @id";
-                            using (SqlCommand cmd = new SqlCommand(query, conn))
+
+                            using (SqlCommand cmd = new SqlCommand("sp_DeleteReview", conn))
                             {
+                                cmd.CommandType = CommandType.StoredProcedure;
                                 cmd.Parameters.AddWithValue("@id", idReview);
+
                                 cmd.ExecuteNonQuery();
                             }
-                            MessageBox.Show("Ulasan terhapus.");
+                            MessageBox.Show("Ulasan berhasil terhapus.");
                             LoadDataReview();
                         }
-                        catch (Exception ex)
+                        catch (SqlException ex)
                         {
-                            MessageBox.Show("Gagal hapus: " + ex.Message);
+                            MessageBox.Show("Gagal hapus: " + ex.Message, "Error");
                         }
                     }
                 }
