@@ -53,8 +53,15 @@ namespace FormUtamaMovieApp
             if (dgvComment.CurrentRow != null)
             {
                 int idReview = Convert.ToInt32(dgvComment.CurrentRow.Cells["review_id"].Value);
-                int skorBaru = Convert.ToInt32(dgvComment.CurrentRow.Cells["Rating"].Value);
-                string komenBaru = dgvComment.CurrentRow.Cells["Ulasan / Komentar"].Value.ToString();
+
+                int skorBaru = (int)numRating.Value;
+                string komenBaru = txtKomentar.Text;
+
+                if (string.IsNullOrWhiteSpace(komenBaru))
+                {
+                    MessageBox.Show("Komentar tidak boleh kosong!");
+                    return;
+                }
 
                 using (SqlConnection conn = KoneksiDB.GetConnection())
                 {
@@ -70,18 +77,21 @@ namespace FormUtamaMovieApp
 
                             cmd.ExecuteNonQuery();
                         }
-                        MessageBox.Show("Ulasan berhasil diperbarui!", "Update Berhasil");
+                        MessageBox.Show("Ulasan berhasil diperbarui!", "Sukses");
+
                         LoadDataReview();
-                    }
-                    catch (SqlException ex)
-                    {
-                        MessageBox.Show("Kesalahan Database: " + ex.Message, "Error");
+                        txtKomentar.Clear();
+                        numRating.Value = 0;
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Gagal update: " + ex.Message);
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Pilih ulasan yang ingin diubah dari tabel terlebih dahulu.");
             }
         }
 
