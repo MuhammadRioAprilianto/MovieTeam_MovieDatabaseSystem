@@ -134,12 +134,10 @@ namespace FormUtamaMovieApp
 
         private void dgvComment_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowRowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvComment.Rows[e.RowIndex];
 
-                // Masukkan nilai dari tabel ke komponen input di atas
-                // Sesuaikan nama "Rating" dan "Ulasan / Komentar" dengan header VIEW kamu
                 numRating.Value = Convert.ToInt32(row.Cells["Rating"].Value);
                 txtKomentar.Text = row.Cells["Ulasan / Komentar"].Value.ToString();
             }
