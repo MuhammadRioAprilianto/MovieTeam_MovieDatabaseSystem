@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -36,7 +37,7 @@ namespace FormUtamaMovieApp
         {
             if (string.IsNullOrWhiteSpace(txtUsernameLogin.Text) || string.IsNullOrWhiteSpace(txtPasswordLogin.Text))
             {
-                MessageBox.Show("Username dan Password tidak boleh kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Isi dulu bos, jangan dikosongin!", "Peringatan");
                 return;
             }
 
@@ -45,10 +46,9 @@ namespace FormUtamaMovieApp
                 try
                 {
                     conn.Open();
-                    string query = "SELECT id, nama, role_id FROM Accounts WHERE username = @user AND password = @pass";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (SqlCommand cmd = new SqlCommand("sp_LoginAccount", conn))
                     {
+                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@user", txtUsernameLogin.Text);
                         cmd.Parameters.AddWithValue("@pass", txtPasswordLogin.Text);
 
@@ -60,21 +60,16 @@ namespace FormUtamaMovieApp
                                 SesiUser.Nama = reader["nama"].ToString();
                                 SesiUser.RoleId = Convert.ToInt32(reader["role_id"]);
 
-                                MessageBox.Show("Selamat datang, " + SesiUser.Nama + "!", "Berhasil");
-
+                                MessageBox.Show("Login Berhasil! Halo, " + SesiUser.Nama, "Sukses");
                                 this.DialogResult = DialogResult.OK;
                                 this.Close();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Username atau Password salah!", "Gagal");
                             }
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (SqlException ex)
                 {
-                    MessageBox.Show("Error Koneksi: " + ex.Message);
+                    MessageBox.Show(ex.Message, "Gagal Login"); // Pesan dari RAISERROR
                 }
             }
         }
