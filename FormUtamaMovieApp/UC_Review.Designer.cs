@@ -34,10 +34,10 @@
             this.labelReview = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtKomentar = new System.Windows.Forms.TextBox();
-            this.numDurasi = new System.Windows.Forms.NumericUpDown();
+            this.numRating = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvComment)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numDurasi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRating)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDeleteComment
@@ -95,7 +95,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.dgvComment, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtKomentar, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.numDurasi, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.numRating, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 80);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -114,13 +114,13 @@
             this.txtKomentar.Size = new System.Drawing.Size(270, 61);
             this.txtKomentar.TabIndex = 10;
             // 
-            // numDurasi
+            // numRating
             // 
-            this.numDurasi.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.numDurasi.Location = new System.Drawing.Point(3, 38);
-            this.numDurasi.Name = "numDurasi";
-            this.numDurasi.Size = new System.Drawing.Size(270, 26);
-            this.numDurasi.TabIndex = 11;
+            this.numRating.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.numRating.Location = new System.Drawing.Point(3, 38);
+            this.numRating.Name = "numRating";
+            this.numRating.Size = new System.Drawing.Size(270, 26);
+            this.numRating.TabIndex = 11;
             // 
             // UC_Review
             // 
@@ -137,7 +137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvComment)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numDurasi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRating)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,6 +151,6 @@
         private System.Windows.Forms.Label labelReview;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox txtKomentar;
-        private System.Windows.Forms.NumericUpDown numDurasi;
+        private System.Windows.Forms.NumericUpDown numRating;
     }
 }
