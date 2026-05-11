@@ -89,7 +89,7 @@ namespace FormUtamaMovieApp
                     }
 
                     // Update status di UI
-                    isInWatchlist = !isInWatchlist;
+                    CekStatusWatchlist();
                     UpdateTampilanTombolWatchlist();
                 }
                 catch (Exception ex) { MessageBox.Show("Gagal update watchlist: " + ex.Message, "Error"); }
