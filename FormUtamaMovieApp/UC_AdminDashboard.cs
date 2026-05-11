@@ -21,22 +21,16 @@ namespace FormUtamaMovieApp
                 {
                     conn.Open();
 
-                    FillGrid(@"SELECT TOP 5 m.judul AS 'Judul', COUNT(w.movie_id) AS 'Total Simpan' 
-                               FROM Watchlists w JOIN Movies m ON w.movie_id = m.movie_id 
-                               GROUP BY m.judul ORDER BY [Total Simpan] DESC", dgvTrendWatchlist, conn);
+                    FillGrid("SELECT * FROM vwTrendWatchlist ORDER BY [Total Simpan] DESC", dgvTrendWatchlist, conn);
 
-                    FillGrid(@"SELECT g.nama_genre AS 'Genre', COUNT(h.history_id) AS 'Peminat' 
-                               FROM History h JOIN Movies m ON h.movie_id = m.movie_id 
-                               JOIN Genres g ON m.genre_id = g.genre_id 
-                               GROUP BY g.nama_genre", dgvDemografiGenre, conn);
+                    FillGrid("SELECT * FROM vwDemografiGenre", dgvDemografiGenre, conn);
 
-                    FillGrid(@"SELECT r.tanggal_diposting AS 'Waktu', a.nama AS 'User', m.judul AS 'Film', 
-                               r.skor_rating AS '⭐', r.komentar AS 'Review' 
-                               FROM Reviews r JOIN Accounts a ON r.user_id = a.id 
-                               JOIN Movies m ON r.movie_id = m.movie_id 
-                               ORDER BY r.tanggal_diposting DESC", dgvAktivitasReview, conn);
+                    FillGrid("SELECT * FROM vwAktivitasReview ORDER BY Waktu DESC", dgvAktivitasReview, conn);
                 }
-                catch (Exception ex) { MessageBox.Show("Error Laporan: " + ex.Message); }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error Laporan: " + ex.Message);
+                }
             }
         }
 
