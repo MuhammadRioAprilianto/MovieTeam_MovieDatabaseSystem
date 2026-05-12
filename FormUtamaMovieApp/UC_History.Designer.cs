@@ -32,10 +32,16 @@
             this.btnDeleteHistory = new System.Windows.Forms.Button();
             this.labelDaftarHistory = new System.Windows.Forms.Label();
             this.dgvHistory = new System.Windows.Forms.DataGridView();
-            this.historyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.movieDBDataSet = new FormUtamaMovieApp.MovieDBDataSet();
+            this.vwHistoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vwHistoryTableAdapter = new FormUtamaMovieApp.MovieDBDataSetTableAdapters.vwHistoryTableAdapter();
+            this.historyidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.useridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.judulFilmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waktuMenontonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).BeginInit();
-            //((System.ComponentModel.ISupportInitialize)(this.movieDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.historyBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movieDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vwHistoryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDeleteHistory
@@ -63,8 +69,15 @@
             // 
             // dgvHistory
             // 
+            this.dgvHistory.AutoGenerateColumns = false;
             this.dgvHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.historyidDataGridViewTextBoxColumn,
+            this.useridDataGridViewTextBoxColumn,
+            this.judulFilmDataGridViewTextBoxColumn,
+            this.waktuMenontonDataGridViewTextBoxColumn});
+            this.dgvHistory.DataSource = this.vwHistoryBindingSource;
             this.dgvHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvHistory.Location = new System.Drawing.Point(20, 80);
             this.dgvHistory.Name = "dgvHistory";
@@ -75,17 +88,47 @@
             // 
             // movieDBDataSet
             // 
-            //this.movieDBDataSet.DataSetName = "MovieDBDataSet";
-            //this.movieDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.movieDBDataSet.DataSetName = "MovieDBDataSet";
+            this.movieDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // historyBindingSource
+            // vwHistoryBindingSource
             // 
-            this.historyBindingSource.DataMember = "History";
-            //this.historyBindingSource.DataSource = this.movieDBDataSet;
+            this.vwHistoryBindingSource.DataMember = "vwHistory";
+            this.vwHistoryBindingSource.DataSource = this.movieDBDataSet;
             // 
-            // historyTableAdapter
+            // vwHistoryTableAdapter
             // 
-            //this.historyTableAdapter.ClearBeforeFill = true;
+            this.vwHistoryTableAdapter.ClearBeforeFill = true;
+            // 
+            // historyidDataGridViewTextBoxColumn
+            // 
+            this.historyidDataGridViewTextBoxColumn.DataPropertyName = "history_id";
+            this.historyidDataGridViewTextBoxColumn.HeaderText = "history_id";
+            this.historyidDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.historyidDataGridViewTextBoxColumn.Name = "historyidDataGridViewTextBoxColumn";
+            this.historyidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // useridDataGridViewTextBoxColumn
+            // 
+            this.useridDataGridViewTextBoxColumn.DataPropertyName = "user_id";
+            this.useridDataGridViewTextBoxColumn.HeaderText = "user_id";
+            this.useridDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.useridDataGridViewTextBoxColumn.Name = "useridDataGridViewTextBoxColumn";
+            this.useridDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // judulFilmDataGridViewTextBoxColumn
+            // 
+            this.judulFilmDataGridViewTextBoxColumn.DataPropertyName = "Judul Film";
+            this.judulFilmDataGridViewTextBoxColumn.HeaderText = "Judul Film";
+            this.judulFilmDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.judulFilmDataGridViewTextBoxColumn.Name = "judulFilmDataGridViewTextBoxColumn";
+            // 
+            // waktuMenontonDataGridViewTextBoxColumn
+            // 
+            this.waktuMenontonDataGridViewTextBoxColumn.DataPropertyName = "Waktu Menonton";
+            this.waktuMenontonDataGridViewTextBoxColumn.HeaderText = "Waktu Menonton";
+            this.waktuMenontonDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.waktuMenontonDataGridViewTextBoxColumn.Name = "waktuMenontonDataGridViewTextBoxColumn";
             // 
             // UC_History
             // 
@@ -98,10 +141,10 @@
             this.Name = "UC_History";
             this.Padding = new System.Windows.Forms.Padding(20, 80, 20, 20);
             this.Size = new System.Drawing.Size(592, 381);
-            this.Load += new System.EventHandler(this.UC_History_Load);
+            //this.Load += new System.EventHandler(this.UC_History_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.movieDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.historyBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movieDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vwHistoryBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,6 +155,12 @@
         private System.Windows.Forms.Button btnDeleteHistory;
         private System.Windows.Forms.Label labelDaftarHistory;
         private System.Windows.Forms.DataGridView dgvHistory;
-        private System.Windows.Forms.BindingSource historyBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn historyidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn useridDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn judulFilmDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn waktuMenontonDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource vwHistoryBindingSource;
+        private MovieDBDataSet movieDBDataSet;
+        private MovieDBDataSetTableAdapters.vwHistoryTableAdapter vwHistoryTableAdapter;
     }
 }

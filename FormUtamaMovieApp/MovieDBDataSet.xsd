@@ -28,6 +28,79 @@
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwAktivitasReviewTableAdapter" GeneratorDataComponentClassName="vwAktivitasReviewTableAdapter" Name="vwAktivitasReview" UserDataComponentName="vwAktivitasReviewTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MovieDBConnectionString (Settings)" DbObjectName="MovieDB.dbo.vwAktivitasReview" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Waktu, [User], Film, [⭐], Review FROM dbo.vwAktivitasReview</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Waktu" DataSetColumn="Waktu" />
+              <Mapping SourceColumn="User" DataSetColumn="User" />
+              <Mapping SourceColumn="Film" DataSetColumn="Film" />
+              <Mapping SourceColumn="⭐" DataSetColumn="⭐" />
+              <Mapping SourceColumn="Review" DataSetColumn="Review" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwDemografiGenreTableAdapter" GeneratorDataComponentClassName="vwDemografiGenreTableAdapter" Name="vwDemografiGenre" UserDataComponentName="vwDemografiGenreTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MovieDBConnectionString (Settings)" DbObjectName="MovieDB.dbo.vwDemografiGenre" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Genre, Peminat FROM dbo.vwDemografiGenre</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Genre" DataSetColumn="Genre" />
+              <Mapping SourceColumn="Peminat" DataSetColumn="Peminat" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwHistoryTableAdapter" GeneratorDataComponentClassName="vwHistoryTableAdapter" Name="vwHistory" UserDataComponentName="vwHistoryTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MovieDBConnectionString (Settings)" DbObjectName="MovieDB.dbo.vwHistory" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT history_id, user_id, [Judul Film], [Waktu Menonton] FROM dbo.vwHistory</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="history_id" DataSetColumn="history_id" />
+              <Mapping SourceColumn="user_id" DataSetColumn="user_id" />
+              <Mapping SourceColumn="Judul Film" DataSetColumn="Judul Film" />
+              <Mapping SourceColumn="Waktu Menonton" DataSetColumn="Waktu Menonton" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwTrendWatchlistTableAdapter" GeneratorDataComponentClassName="vwTrendWatchlistTableAdapter" Name="vwTrendWatchlist" UserDataComponentName="vwTrendWatchlistTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MovieDBConnectionString (Settings)" DbObjectName="MovieDB.dbo.vwTrendWatchlist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Judul, [Total Simpan] FROM dbo.vwTrendWatchlist</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Judul" DataSetColumn="Judul" />
+              <Mapping SourceColumn="Total Simpan" DataSetColumn="Total Simpan" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -36,27 +109,100 @@
   <xs:element name="MovieDBDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="MovieDBDataSet" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="MovieDBDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="vwReview" msprop:Generator_RowClassName="vwReviewRow" msprop:Generator_RowEvHandlerName="vwReviewRowChangeEventHandler" msprop:Generator_RowDeletedName="vwReviewRowDeleted" msprop:Generator_RowDeletingName="vwReviewRowDeleting" msprop:Generator_RowEvArgName="vwReviewRowChangeEvent" msprop:Generator_TablePropName="vwReview" msprop:Generator_RowChangedName="vwReviewRowChanged" msprop:Generator_UserTableName="vwReview" msprop:Generator_RowChangingName="vwReviewRowChanging" msprop:Generator_TableClassName="vwReviewDataTable" msprop:Generator_TableVarName="tablevwReview">
+        <xs:element name="vwReview" msprop:Generator_RowEvHandlerName="vwReviewRowChangeEventHandler" msprop:Generator_RowDeletedName="vwReviewRowDeleted" msprop:Generator_RowDeletingName="vwReviewRowDeleting" msprop:Generator_RowEvArgName="vwReviewRowChangeEvent" msprop:Generator_TablePropName="vwReview" msprop:Generator_RowChangedName="vwReviewRowChanged" msprop:Generator_UserTableName="vwReview" msprop:Generator_RowChangingName="vwReviewRowChanging" msprop:Generator_RowClassName="vwReviewRow" msprop:Generator_TableClassName="vwReviewDataTable" msprop:Generator_TableVarName="tablevwReview">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Judul_x0020_Film" msprop:Generator_UserColumnName="Judul Film" msprop:Generator_ColumnPropNameInTable="Judul_FilmColumn" msprop:Generator_ColumnPropNameInRow="Judul_Film" msprop:Generator_ColumnVarNameInTable="columnJudul_Film">
+              <xs:element name="Judul_x0020_Film" msprop:Generator_ColumnPropNameInTable="Judul_FilmColumn" msprop:Generator_ColumnPropNameInRow="Judul_Film" msprop:Generator_UserColumnName="Judul Film" msprop:Generator_ColumnVarNameInTable="columnJudul_Film">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="200" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Rating" msprop:Generator_UserColumnName="Rating" msprop:Generator_ColumnPropNameInTable="RatingColumn" msprop:Generator_ColumnPropNameInRow="Rating" msprop:Generator_ColumnVarNameInTable="columnRating" type="xs:int" minOccurs="0" />
-              <xs:element name="Ulasan_x0020__x002F__x0020_Komentar" msprop:Generator_UserColumnName="Ulasan / Komentar" msprop:Generator_ColumnPropNameInTable="_Ulasan___KomentarColumn" msprop:Generator_ColumnPropNameInRow="_Ulasan___Komentar" msprop:Generator_ColumnVarNameInTable="_columnUlasan___Komentar" minOccurs="0">
+              <xs:element name="Rating" msprop:Generator_ColumnPropNameInTable="RatingColumn" msprop:Generator_ColumnPropNameInRow="Rating" msprop:Generator_UserColumnName="Rating" msprop:Generator_ColumnVarNameInTable="columnRating" type="xs:int" minOccurs="0" />
+              <xs:element name="Ulasan_x0020__x002F__x0020_Komentar" msprop:Generator_ColumnPropNameInTable="_Ulasan___KomentarColumn" msprop:Generator_ColumnPropNameInRow="_Ulasan___Komentar" msprop:Generator_UserColumnName="Ulasan / Komentar" msprop:Generator_ColumnVarNameInTable="_columnUlasan___Komentar" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Tanggal" msprop:Generator_UserColumnName="Tanggal" msprop:Generator_ColumnPropNameInTable="TanggalColumn" msprop:Generator_ColumnPropNameInRow="Tanggal" msprop:Generator_ColumnVarNameInTable="columnTanggal" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="review_id" msprop:Generator_ColumnPropNameInRow="review_id" msprop:Generator_ColumnPropNameInTable="review_idColumn" msprop:Generator_ColumnVarNameInTable="columnreview_id" msprop:Generator_UserColumnName="review_id" type="xs:int" />
+              <xs:element name="Tanggal" msprop:Generator_ColumnPropNameInTable="TanggalColumn" msprop:Generator_ColumnPropNameInRow="Tanggal" msprop:Generator_UserColumnName="Tanggal" msprop:Generator_ColumnVarNameInTable="columnTanggal" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="review_id" msprop:Generator_UserColumnName="review_id" msprop:Generator_ColumnPropNameInTable="review_idColumn" msprop:Generator_ColumnPropNameInRow="review_id" msprop:Generator_ColumnVarNameInTable="columnreview_id" type="xs:int" />
+              <xs:element name="user_id" msprop:Generator_UserColumnName="user_id" msprop:Generator_ColumnPropNameInTable="user_idColumn" msprop:Generator_ColumnPropNameInRow="user_id" msprop:Generator_ColumnVarNameInTable="columnuser_id" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="vwAktivitasReview" msprop:Generator_RowEvHandlerName="vwAktivitasReviewRowChangeEventHandler" msprop:Generator_RowDeletedName="vwAktivitasReviewRowDeleted" msprop:Generator_RowDeletingName="vwAktivitasReviewRowDeleting" msprop:Generator_RowEvArgName="vwAktivitasReviewRowChangeEvent" msprop:Generator_TablePropName="vwAktivitasReview" msprop:Generator_RowChangedName="vwAktivitasReviewRowChanged" msprop:Generator_RowChangingName="vwAktivitasReviewRowChanging" msprop:Generator_TableClassName="vwAktivitasReviewDataTable" msprop:Generator_RowClassName="vwAktivitasReviewRow" msprop:Generator_TableVarName="tablevwAktivitasReview" msprop:Generator_UserTableName="vwAktivitasReview">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Waktu" msprop:Generator_ColumnPropNameInRow="Waktu" msprop:Generator_ColumnPropNameInTable="WaktuColumn" msprop:Generator_ColumnVarNameInTable="columnWaktu" msprop:Generator_UserColumnName="Waktu" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="User" msprop:Generator_ColumnPropNameInRow="User" msprop:Generator_ColumnPropNameInTable="UserColumn" msprop:Generator_ColumnVarNameInTable="columnUser" msprop:Generator_UserColumnName="User">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Film" msprop:Generator_ColumnPropNameInRow="Film" msprop:Generator_ColumnPropNameInTable="FilmColumn" msprop:Generator_ColumnVarNameInTable="columnFilm" msprop:Generator_UserColumnName="Film">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x2B50_" msprop:Generator_ColumnPropNameInRow="__" msprop:Generator_ColumnPropNameInTable="__Column" msprop:Generator_ColumnVarNameInTable="_column_" msprop:Generator_UserColumnName="⭐" type="xs:int" minOccurs="0" />
+              <xs:element name="Review" msprop:Generator_ColumnPropNameInRow="Review" msprop:Generator_ColumnPropNameInTable="ReviewColumn" msprop:Generator_ColumnVarNameInTable="columnReview" msprop:Generator_UserColumnName="Review" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="vwDemografiGenre" msprop:Generator_RowEvHandlerName="vwDemografiGenreRowChangeEventHandler" msprop:Generator_RowDeletedName="vwDemografiGenreRowDeleted" msprop:Generator_RowDeletingName="vwDemografiGenreRowDeleting" msprop:Generator_RowEvArgName="vwDemografiGenreRowChangeEvent" msprop:Generator_TablePropName="vwDemografiGenre" msprop:Generator_RowChangedName="vwDemografiGenreRowChanged" msprop:Generator_RowChangingName="vwDemografiGenreRowChanging" msprop:Generator_TableClassName="vwDemografiGenreDataTable" msprop:Generator_RowClassName="vwDemografiGenreRow" msprop:Generator_TableVarName="tablevwDemografiGenre" msprop:Generator_UserTableName="vwDemografiGenre">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Genre" msprop:Generator_ColumnPropNameInRow="Genre" msprop:Generator_ColumnPropNameInTable="GenreColumn" msprop:Generator_ColumnVarNameInTable="columnGenre" msprop:Generator_UserColumnName="Genre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Peminat" msprop:Generator_ColumnPropNameInRow="Peminat" msprop:Generator_ColumnPropNameInTable="PeminatColumn" msprop:Generator_ColumnVarNameInTable="columnPeminat" msprop:Generator_UserColumnName="Peminat" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="vwHistory" msprop:Generator_RowEvHandlerName="vwHistoryRowChangeEventHandler" msprop:Generator_RowDeletedName="vwHistoryRowDeleted" msprop:Generator_RowDeletingName="vwHistoryRowDeleting" msprop:Generator_RowEvArgName="vwHistoryRowChangeEvent" msprop:Generator_TablePropName="vwHistory" msprop:Generator_RowChangedName="vwHistoryRowChanged" msprop:Generator_RowChangingName="vwHistoryRowChanging" msprop:Generator_TableClassName="vwHistoryDataTable" msprop:Generator_RowClassName="vwHistoryRow" msprop:Generator_TableVarName="tablevwHistory" msprop:Generator_UserTableName="vwHistory">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="history_id" msprop:Generator_ColumnPropNameInRow="history_id" msprop:Generator_ColumnPropNameInTable="history_idColumn" msprop:Generator_ColumnVarNameInTable="columnhistory_id" msprop:Generator_UserColumnName="history_id" type="xs:int" />
               <xs:element name="user_id" msprop:Generator_ColumnPropNameInRow="user_id" msprop:Generator_ColumnPropNameInTable="user_idColumn" msprop:Generator_ColumnVarNameInTable="columnuser_id" msprop:Generator_UserColumnName="user_id" type="xs:int" />
+              <xs:element name="Judul_x0020_Film" msprop:Generator_ColumnPropNameInRow="Judul_Film" msprop:Generator_ColumnPropNameInTable="Judul_FilmColumn" msprop:Generator_ColumnVarNameInTable="columnJudul_Film" msprop:Generator_UserColumnName="Judul Film">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Waktu_x0020_Menonton" msprop:Generator_ColumnPropNameInRow="Waktu_Menonton" msprop:Generator_ColumnPropNameInTable="Waktu_MenontonColumn" msprop:Generator_ColumnVarNameInTable="columnWaktu_Menonton" msprop:Generator_UserColumnName="Waktu Menonton" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="vwTrendWatchlist" msprop:Generator_RowEvHandlerName="vwTrendWatchlistRowChangeEventHandler" msprop:Generator_RowDeletedName="vwTrendWatchlistRowDeleted" msprop:Generator_RowDeletingName="vwTrendWatchlistRowDeleting" msprop:Generator_RowEvArgName="vwTrendWatchlistRowChangeEvent" msprop:Generator_TablePropName="vwTrendWatchlist" msprop:Generator_RowChangedName="vwTrendWatchlistRowChanged" msprop:Generator_RowChangingName="vwTrendWatchlistRowChanging" msprop:Generator_TableClassName="vwTrendWatchlistDataTable" msprop:Generator_RowClassName="vwTrendWatchlistRow" msprop:Generator_TableVarName="tablevwTrendWatchlist" msprop:Generator_UserTableName="vwTrendWatchlist">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Judul" msprop:Generator_ColumnPropNameInRow="Judul" msprop:Generator_ColumnPropNameInTable="JudulColumn" msprop:Generator_ColumnVarNameInTable="columnJudul" msprop:Generator_UserColumnName="Judul">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Total_x0020_Simpan" msprop:Generator_ColumnPropNameInRow="Total_Simpan" msprop:Generator_ColumnPropNameInTable="Total_SimpanColumn" msprop:Generator_ColumnVarNameInTable="columnTotal_Simpan" msprop:Generator_UserColumnName="Total Simpan" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -65,6 +211,10 @@
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:vwReview" />
       <xs:field xpath="mstns:review_id" />
+    </xs:unique>
+    <xs:unique name="vwHistory_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vwHistory" />
+      <xs:field xpath="mstns:history_id" />
     </xs:unique>
   </xs:element>
 </xs:schema>

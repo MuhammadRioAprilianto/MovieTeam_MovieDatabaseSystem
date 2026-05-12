@@ -10,13 +10,16 @@ namespace FormUtamaMovieApp
         public UC_History()
         {
             InitializeComponent();
+            this.vwHistoryTableAdapter.Fill(this.movieDBDataSet.vwHistory);
+            vwHistoryBindingSource.Filter = "user_id = " + SesiUser.IdUser;
             btnDeleteHistory.Click += btnDeleteHistory_Click;
         }
-
+        /*
         private void UC_History_Load(object sender, EventArgs e)
         {
             LoadDataHistory();
         }
+        */
 
         private void LoadDataHistory()
         {
@@ -55,11 +58,14 @@ namespace FormUtamaMovieApp
 
         private void btnDeleteHistory_Click(object sender, EventArgs e)
         {
-            if (dgvHistory.CurrentRow != null)
+            if (vwHistoryBindingSource.Current != null)
             {
-                int idHistoryTerpilih = Convert.ToInt32(dgvHistory.CurrentRow.Cells["history_id"].Value);
+                var dataSekarang = (System.Data.DataRowView)vwHistoryBindingSource.Current;
 
-                DialogResult dialog = MessageBox.Show("Yakin ingin menghapus film ini dari riwayat tontonan?", "Hapus History", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                int idHistoryTerpilih = Convert.ToInt32(dataSekarang["history_id"]);
+
+                DialogResult dialog = MessageBox.Show("Yakin ingin menghapus film ini dari riwayat tontonan?",
+                    "Hapus History", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (dialog == DialogResult.Yes)
                 {
@@ -75,8 +81,9 @@ namespace FormUtamaMovieApp
                                 cmd.ExecuteNonQuery();
                             }
 
+                            this.vwHistoryTableAdapter.Fill(this.movieDBDataSet.vwHistory);
+
                             MessageBox.Show("Riwayat tontonan berhasil dihapus!", "Sukses");
-                            LoadDataHistory();
                         }
                         catch (Exception ex)
                         {
@@ -87,7 +94,7 @@ namespace FormUtamaMovieApp
             }
             else
             {
-                MessageBox.Show("Silakan pilih data di tabel terlebih dahulu.");
+                MessageBox.Show("Riwayat masih kosong atau belum terpilih.");
             }
         }
     }
