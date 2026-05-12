@@ -14,7 +14,14 @@ namespace FormUtamaMovieApp
             btnUpdateComment.Click += btnUpdate_Click;
             btnDeleteComment.Click += btnDelete_Click;
 
-            LoadDataReview();
+            try 
+            {
+                this.vwReviewTableAdapter.Fill(this.movieDBDataSet.vwReview);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal load data: " + ex.Message); 
+            }
         }
 
         public void LoadDataReview()
@@ -52,7 +59,8 @@ namespace FormUtamaMovieApp
         {
             if (dgvComment.CurrentRow != null)
             {
-                int idReview = Convert.ToInt32(dgvComment.CurrentRow.Cells["review_id"].Value);
+                var dataSekarang = (System.Data.DataRowView)vwReviewBindingSource.Current;
+                int idReview = Convert.ToInt32(dataSekarang["review_id"]);
 
                 int skorBaru = (int)numRating.Value;
                 string komenBaru = txtKomentar.Text;
@@ -76,12 +84,13 @@ namespace FormUtamaMovieApp
                             cmd.Parameters.AddWithValue("@komen", komenBaru);
 
                             cmd.ExecuteNonQuery();
+                            this.vwReviewTableAdapter.Fill(this.movieDBDataSet.vwReview);
                         }
                         MessageBox.Show("Ulasan berhasil diperbarui!", "Sukses");
 
-                        LoadDataReview();
-                        txtKomentar.Clear();
-                        numRating.Value = 0;
+                        //LoadDataReview();
+                        //txtKomentar.Clear();
+                        //numRating.Value = 0;
                     }
                     catch (Exception ex)
                     {
@@ -97,13 +106,15 @@ namespace FormUtamaMovieApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dgvComment.CurrentRow != null)
+            if (vwReviewBindingSource.Current != null)
             {
-                int idReview = Convert.ToInt32(dgvComment.CurrentRow.Cells["review_id"].Value);
-                string judul = dgvComment.CurrentRow.Cells["Judul Film"].Value.ToString();
+                var dataSekarang = (System.Data.DataRowView)vwReviewBindingSource.Current;
 
-                DialogResult konfirmasi = MessageBox.Show($"Yakin mau hapus ulasan film {judul}?",
-                    "Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                int idReview = Convert.ToInt32(dataSekarang["review_id"]);
+                string judul = dataSekarang["Judul Film"].ToString();
+
+                DialogResult konfirmasi = MessageBox.Show("Yakin mau hapus ulasan film " + judul + "?",
+                    "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (konfirmasi == DialogResult.Yes)
                 {
@@ -112,16 +123,16 @@ namespace FormUtamaMovieApp
                         try
                         {
                             conn.Open();
-
                             using (SqlCommand cmd = new SqlCommand("sp_DeleteReview", conn))
                             {
                                 cmd.CommandType = CommandType.StoredProcedure;
                                 cmd.Parameters.AddWithValue("@id", idReview);
 
                                 cmd.ExecuteNonQuery();
+
+                                this.vwReviewTableAdapter.Fill(this.movieDBDataSet.vwReview);
                             }
-                            MessageBox.Show("Ulasan berhasil terhapus.");
-                            LoadDataReview();
+                            MessageBox.Show("Ulasan berhasil terhapus.", "Sukses");
                         }
                         catch (SqlException ex)
                         {
@@ -130,17 +141,14 @@ namespace FormUtamaMovieApp
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("Silakan pilih ulasan yang ingin dihapus terlebih dahulu.");
+            }
         }
 
         private void dgvComment_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dgvComment.Rows[e.RowIndex];
-
-                numRating.Value = Convert.ToInt32(row.Cells["Rating"].Value);
-                txtKomentar.Text = row.Cells["Ulasan / Komentar"].Value.ToString();
-            }
         }
     }
 }
