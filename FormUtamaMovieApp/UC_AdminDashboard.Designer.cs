@@ -38,6 +38,22 @@
             this.panelGenre = new System.Windows.Forms.Panel();
             this.panelReview = new System.Windows.Forms.Panel();
             this.watchlistsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.movieDBDataSet = new FormUtamaMovieApp.MovieDBDataSet();
+            this.vwTrendWatchlistBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vwTrendWatchlistTableAdapter = new FormUtamaMovieApp.MovieDBDataSetTableAdapters.vwTrendWatchlistTableAdapter();
+            this.judulDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalSimpanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vwDemografiGenreBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vwDemografiGenreTableAdapter = new FormUtamaMovieApp.MovieDBDataSetTableAdapters.vwDemografiGenreTableAdapter();
+            this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.peminatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vwAktivitasReviewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vwAktivitasReviewTableAdapter = new FormUtamaMovieApp.MovieDBDataSetTableAdapters.vwAktivitasReviewTableAdapter();
+            this.waktuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.filmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reviewDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAktivitasReview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrendWatchlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDemografiGenre)).BeginInit();
@@ -46,11 +62,23 @@
             this.panelGenre.SuspendLayout();
             this.panelReview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.watchlistsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movieDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vwTrendWatchlistBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vwDemografiGenreBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vwAktivitasReviewBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvAktivitasReview
             // 
+            this.dgvAktivitasReview.AutoGenerateColumns = false;
             this.dgvAktivitasReview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAktivitasReview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.waktuDataGridViewTextBoxColumn,
+            this.userDataGridViewTextBoxColumn,
+            this.filmDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn1,
+            this.reviewDataGridViewTextBoxColumn});
+            this.dgvAktivitasReview.DataSource = this.vwAktivitasReviewBindingSource;
             this.dgvAktivitasReview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAktivitasReview.Location = new System.Drawing.Point(0, 0);
             this.dgvAktivitasReview.Name = "dgvAktivitasReview";
@@ -61,7 +89,12 @@
             // 
             // dgvTrendWatchlist
             // 
+            this.dgvTrendWatchlist.AutoGenerateColumns = false;
             this.dgvTrendWatchlist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTrendWatchlist.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.judulDataGridViewTextBoxColumn,
+            this.totalSimpanDataGridViewTextBoxColumn});
+            this.dgvTrendWatchlist.DataSource = this.vwTrendWatchlistBindingSource;
             this.dgvTrendWatchlist.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTrendWatchlist.Location = new System.Drawing.Point(0, 0);
             this.dgvTrendWatchlist.Name = "dgvTrendWatchlist";
@@ -72,7 +105,12 @@
             // 
             // dgvDemografiGenre
             // 
+            this.dgvDemografiGenre.AutoGenerateColumns = false;
             this.dgvDemografiGenre.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDemografiGenre.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.genreDataGridViewTextBoxColumn,
+            this.peminatDataGridViewTextBoxColumn});
+            this.dgvDemografiGenre.DataSource = this.vwDemografiGenreBindingSource;
             this.dgvDemografiGenre.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDemografiGenre.Location = new System.Drawing.Point(0, 0);
             this.dgvDemografiGenre.Name = "dgvDemografiGenre";
@@ -137,15 +175,113 @@
             this.panelReview.Size = new System.Drawing.Size(546, 135);
             this.panelReview.TabIndex = 2;
             // 
-            // movieDBDataSet
-            // 
-            // 
             // watchlistsBindingSource
             // 
             this.watchlistsBindingSource.DataMember = "Watchlists";
             // 
-            // watchlistsTableAdapter
+            // movieDBDataSet
             // 
+            this.movieDBDataSet.DataSetName = "MovieDBDataSet";
+            this.movieDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // vwTrendWatchlistBindingSource
+            // 
+            this.vwTrendWatchlistBindingSource.DataMember = "vwTrendWatchlist";
+            this.vwTrendWatchlistBindingSource.DataSource = this.movieDBDataSet;
+            // 
+            // vwTrendWatchlistTableAdapter
+            // 
+            this.vwTrendWatchlistTableAdapter.ClearBeforeFill = true;
+            // 
+            // judulDataGridViewTextBoxColumn
+            // 
+            this.judulDataGridViewTextBoxColumn.DataPropertyName = "Judul";
+            this.judulDataGridViewTextBoxColumn.HeaderText = "Judul";
+            this.judulDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.judulDataGridViewTextBoxColumn.Name = "judulDataGridViewTextBoxColumn";
+            this.judulDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // totalSimpanDataGridViewTextBoxColumn
+            // 
+            this.totalSimpanDataGridViewTextBoxColumn.DataPropertyName = "Total Simpan";
+            this.totalSimpanDataGridViewTextBoxColumn.HeaderText = "Total Simpan";
+            this.totalSimpanDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.totalSimpanDataGridViewTextBoxColumn.Name = "totalSimpanDataGridViewTextBoxColumn";
+            this.totalSimpanDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // vwDemografiGenreBindingSource
+            // 
+            this.vwDemografiGenreBindingSource.DataMember = "vwDemografiGenre";
+            this.vwDemografiGenreBindingSource.DataSource = this.movieDBDataSet;
+            // 
+            // vwDemografiGenreTableAdapter
+            // 
+            this.vwDemografiGenreTableAdapter.ClearBeforeFill = true;
+            // 
+            // genreDataGridViewTextBoxColumn
+            // 
+            this.genreDataGridViewTextBoxColumn.DataPropertyName = "Genre";
+            this.genreDataGridViewTextBoxColumn.HeaderText = "Genre";
+            this.genreDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.genreDataGridViewTextBoxColumn.Name = "genreDataGridViewTextBoxColumn";
+            this.genreDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // peminatDataGridViewTextBoxColumn
+            // 
+            this.peminatDataGridViewTextBoxColumn.DataPropertyName = "Peminat";
+            this.peminatDataGridViewTextBoxColumn.HeaderText = "Peminat";
+            this.peminatDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.peminatDataGridViewTextBoxColumn.Name = "peminatDataGridViewTextBoxColumn";
+            this.peminatDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // vwAktivitasReviewBindingSource
+            // 
+            this.vwAktivitasReviewBindingSource.DataMember = "vwAktivitasReview";
+            this.vwAktivitasReviewBindingSource.DataSource = this.movieDBDataSet;
+            // 
+            // vwAktivitasReviewTableAdapter
+            // 
+            this.vwAktivitasReviewTableAdapter.ClearBeforeFill = true;
+            // 
+            // waktuDataGridViewTextBoxColumn
+            // 
+            this.waktuDataGridViewTextBoxColumn.DataPropertyName = "Waktu";
+            this.waktuDataGridViewTextBoxColumn.HeaderText = "Waktu";
+            this.waktuDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.waktuDataGridViewTextBoxColumn.Name = "waktuDataGridViewTextBoxColumn";
+            this.waktuDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // userDataGridViewTextBoxColumn
+            // 
+            this.userDataGridViewTextBoxColumn.DataPropertyName = "User";
+            this.userDataGridViewTextBoxColumn.HeaderText = "User";
+            this.userDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.userDataGridViewTextBoxColumn.Name = "userDataGridViewTextBoxColumn";
+            this.userDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // filmDataGridViewTextBoxColumn
+            // 
+            this.filmDataGridViewTextBoxColumn.DataPropertyName = "Film";
+            this.filmDataGridViewTextBoxColumn.HeaderText = "Film";
+            this.filmDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.filmDataGridViewTextBoxColumn.Name = "filmDataGridViewTextBoxColumn";
+            this.filmDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "⭐";
+            this.dataGridViewTextBoxColumn1.HeaderText = "⭐";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // reviewDataGridViewTextBoxColumn
+            // 
+            this.reviewDataGridViewTextBoxColumn.DataPropertyName = "Review";
+            this.reviewDataGridViewTextBoxColumn.HeaderText = "Review";
+            this.reviewDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.reviewDataGridViewTextBoxColumn.Name = "reviewDataGridViewTextBoxColumn";
+            this.reviewDataGridViewTextBoxColumn.Width = 150;
             // 
             // UC_AdminDashboard
             // 
@@ -165,6 +301,10 @@
             this.panelGenre.ResumeLayout(false);
             this.panelReview.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.watchlistsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movieDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vwTrendWatchlistBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vwDemografiGenreBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vwAktivitasReviewBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,5 +321,21 @@
         private System.Windows.Forms.Panel panelGenre;
         private System.Windows.Forms.Panel panelReview;
         private System.Windows.Forms.BindingSource watchlistsBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn waktuDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn filmDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn reviewDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource vwAktivitasReviewBindingSource;
+        private MovieDBDataSet movieDBDataSet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn judulDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalSimpanDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource vwTrendWatchlistBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genreDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn peminatDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource vwDemografiGenreBindingSource;
+        private MovieDBDataSetTableAdapters.vwTrendWatchlistTableAdapter vwTrendWatchlistTableAdapter;
+        private MovieDBDataSetTableAdapters.vwDemografiGenreTableAdapter vwDemografiGenreTableAdapter;
+        private MovieDBDataSetTableAdapters.vwAktivitasReviewTableAdapter vwAktivitasReviewTableAdapter;
     }
 }
