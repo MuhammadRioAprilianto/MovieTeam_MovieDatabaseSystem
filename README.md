@@ -2,15 +2,15 @@
 Bukti menjalankan aplikasi
 
 - Aplikasi berhasil terkoneksi dengan database, ditandai dengan muncul data pada katalog
-![Screenshot Aplikasi](FormUtamaMovieApp/Gambar/TestKoneksi.png)
+<img src="Gambar/TestKoneksi.png" alt="Screenshot Aplikasi" width="500">
 - Form Insert
-![Screenshot Aplikasi](FormUtamaMovieApp/Gambar/FromInsert.png)
+<img src="Gambar/FromInsert.png" alt="Screenshot Aplikasi" width="500">
 - Form Tampil Data
-![Screenshot Aplikasi](FormUtamaMovieApp/Gambar/FormTampil.png)
+<img src="Gambar/FormTampil.png" alt="Screenshot Aplikasi" width="500">
 - Bukti insert, update, delete, dan search
-[Screenshot Aplikasi](FormUtamaMovieApp/Gambar/TestInsert.png)
-[Screenshot Aplikasi](FormUtamaMovieApp/Gambar/TestUpdate.png)
-[Screenshot Aplikasi](FormUtamaMovieApp/Gambar/TestDelete.png)
+<img src="Gambar/TestInsert.png" alt="Screenshot Aplikasi" width="500">
+<img src="Gambar/TestUpdate.png" alt="Screenshot Aplikasi" width="500">
+<img src="Gambar/TestDelete.png" alt="Screenshot Aplikasi" width="500">
 
 ##### SKENARIO SQL INJECTION #####
 Dalam kasus ini kelompok kami mencoba untuk menjalankan sebuah skenario hakcing dengan menggunakan SQL Injection pada sistem aplikasi kami sendiri dengan memanfaatkan celah pada bagian form login.
