@@ -37,20 +37,23 @@ namespace FormUtamaMovieApp
         {
             if (string.IsNullOrWhiteSpace(txtUsernameLogin.Text) || string.IsNullOrWhiteSpace(txtPasswordLogin.Text))
             {
-                MessageBox.Show("username tidak boleh dikosongi!", "Peringatan");
+                MessageBox.Show("Username dan Password tidak boleh kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            string username = txtUsernameLogin.Text;
+            string password = txtPasswordLogin.Text;
 
             using (SqlConnection conn = KoneksiDB.GetConnection())
             {
                 try
                 {
                     conn.Open();
-                    using (SqlCommand cmd = new SqlCommand("sp_LoginAccount", conn))
+
+                    string query = "SELECT id, nama, role_id FROM Accounts WHERE username = '" + username + "' AND password = '" + password + "'";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@user", txtUsernameLogin.Text);
-                        cmd.Parameters.AddWithValue("@pass", txtPasswordLogin.Text);
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -60,16 +63,21 @@ namespace FormUtamaMovieApp
                                 SesiUser.Nama = reader["nama"].ToString();
                                 SesiUser.RoleId = Convert.ToInt32(reader["role_id"]);
 
-                                MessageBox.Show("Login Berhasil! Halo, " + SesiUser.Nama, "Sukses");
+                                MessageBox.Show("LOGIN BERHASIL! Selamat datang, " + SesiUser.Nama + "!", "Security Hole Found");
+
                                 this.DialogResult = DialogResult.OK;
                                 this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Username atau Password salah!", "Gagal");
                             }
                         }
                     }
                 }
-                catch (SqlException ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Gagal Login");
+                    MessageBox.Show("Error: " + ex.Message);
                 }
             }
         }
