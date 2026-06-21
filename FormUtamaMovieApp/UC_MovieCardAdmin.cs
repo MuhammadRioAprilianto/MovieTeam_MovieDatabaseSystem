@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.IO; 
 using System.Windows.Forms;
 
 namespace FormUtamaMovieApp
@@ -15,11 +17,31 @@ namespace FormUtamaMovieApp
             InitializeComponent();
         }
 
-        public void SetData(int id, string judul)
+        public void SetData(int id, string judul, byte[] posterBiner)
         {
             _movieId = id;
             _judul = judul;
             lblJudulMovie.Text = judul;
+
+            if (posterBiner != null && posterBiner.Length > 0)
+            {
+                try
+                {
+                    using (MemoryStream ms = new MemoryStream(posterBiner))
+                    {
+                        pbPosterAdmin.Image = Image.FromStream(ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error load poster admin: " + ex.Message);
+                    pbPosterAdmin.Image = null;
+                }
+            }
+            else
+            {
+                pbPosterAdmin.Image = null;
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
