@@ -31,10 +31,18 @@ namespace FormUtamaMovieApp
                             while (reader.Read())
                             {
                                 UC_MovieItem kartuFilm = new UC_MovieItem();
-                                kartuFilm.SetDataFilm(
-                                    Convert.ToInt32(reader["movie_id"]),
-                                    reader["judul"].ToString()
-                                );
+
+                                int id = Convert.ToInt32(reader["movie_id"]);
+                                string judul = reader["judul"].ToString();
+
+                                byte[] poster = null;
+                                if (reader["poster_image"] != DBNull.Value)
+                                {
+                                    poster = (byte[])reader["poster_image"];
+                                }
+
+                                kartuFilm.SetDataFilm(id, judul, poster);
+
                                 kartuFilm.Margin = new Padding(15);
                                 flpKatalogMovie.Controls.Add(kartuFilm);
                             }
