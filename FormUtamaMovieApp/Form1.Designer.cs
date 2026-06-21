@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUtama));
             this.panelHeader = new System.Windows.Forms.Panel();
             this.btnLoginRegister = new System.Windows.Forms.Button();
             this.labelJudul = new System.Windows.Forms.Label();
@@ -173,6 +174,7 @@
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panelSidebar);
             this.Controls.Add(this.panelHeader);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormUtama";
             this.Text = "Form Utama";
             this.Load += new System.EventHandler(this.FormUtama_Load);
