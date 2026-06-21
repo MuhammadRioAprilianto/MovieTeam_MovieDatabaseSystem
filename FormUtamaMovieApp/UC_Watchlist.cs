@@ -31,7 +31,8 @@ namespace FormUtamaMovieApp
                 {
                     conn.Open();
 
-                    string query = "SELECT movie_id, judul FROM vwUserWatchlist WHERE user_id = @uid";
+                    // 1. UPDATE: Tambahkan poster_image pada query
+                    string query = "SELECT movie_id, judul, poster_image FROM vwUserWatchlist WHERE user_id = @uid";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -55,7 +56,16 @@ namespace FormUtamaMovieApp
                                 int id = Convert.ToInt32(reader["movie_id"]);
                                 string judul = reader["judul"].ToString();
 
-                                kartuFilm.SetDataFilm(id, judul);
+                                // 2. UPDATE: Ambil data gambar biner dari database
+                                byte[] poster = null;
+                                if (reader["poster_image"] != DBNull.Value)
+                                {
+                                    poster = (byte[])reader["poster_image"];
+                                }
+
+                                // 3. UPDATE: Masukkan 3 parameter (id, judul, poster) ke SetDataFilm
+                                kartuFilm.SetDataFilm(id, judul, poster);
+
                                 kartuFilm.Margin = new Padding(10);
 
                                 flpWatchlist.Controls.Add(kartuFilm);
