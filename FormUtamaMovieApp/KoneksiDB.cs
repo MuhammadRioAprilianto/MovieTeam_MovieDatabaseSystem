@@ -5,7 +5,7 @@ namespace FormUtamaMovieApp
 {
     public class KoneksiDB
     {
-        private static string connString = @"Server=RIZOO\MUHAMMADRIO;Database=MovieDB;Integrated Security=True;";
+        private static string connString = @"Server=RIZOO\MUHAMMADRIO;Database=MovieDB;User ID=sa;Password=R2i8o0406;";
 
         public static SqlConnection GetConnection()
         {
