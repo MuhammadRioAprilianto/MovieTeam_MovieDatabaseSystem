@@ -33,16 +33,16 @@
             this.btnWatchlistToggle = new System.Windows.Forms.Button();
             this.btnPlay = new System.Windows.Forms.Button();
             this.lblJudulMovie = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbPosterMovie = new System.Windows.Forms.PictureBox();
             this.panelDasar.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPosterMovie)).BeginInit();
             this.SuspendLayout();
             // 
             // panelDasar
             // 
             this.panelDasar.Controls.Add(this.panel1);
-            this.panelDasar.Controls.Add(this.pictureBox1);
+            this.panelDasar.Controls.Add(this.pbPosterMovie);
             this.panelDasar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDasar.Location = new System.Drawing.Point(10, 10);
             this.panelDasar.Name = "panelDasar";
@@ -98,14 +98,15 @@
             this.lblJudulMovie.Text = "Judul Movie";
             this.lblJudulMovie.Click += new System.EventHandler(this.lblJudulMovie_Click);
             // 
-            // pictureBox1
+            // pbPosterMovie
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(146, 150);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.pbPosterMovie.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pbPosterMovie.Location = new System.Drawing.Point(0, 0);
+            this.pbPosterMovie.Name = "pbPosterMovie";
+            this.pbPosterMovie.Size = new System.Drawing.Size(146, 150);
+            this.pbPosterMovie.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPosterMovie.TabIndex = 2;
+            this.pbPosterMovie.TabStop = false;
             // 
             // UC_MovieItem
             // 
@@ -120,7 +121,7 @@
             this.panelDasar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPosterMovie)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -132,6 +133,6 @@
         private System.Windows.Forms.Button btnWatchlistToggle;
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Label lblJudulMovie;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbPosterMovie;
     }
 }
