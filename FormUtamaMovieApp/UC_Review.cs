@@ -14,14 +14,7 @@ namespace FormUtamaMovieApp
             btnUpdateComment.Click += btnUpdate_Click;
             btnDeleteComment.Click += btnDelete_Click;
 
-            try 
-            {
-                this.vwReviewTableAdapter.Fill(this.movieDBDataSet.vwReview);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Gagal load data: " + ex.Message); 
-            }
+            LoadDataReview();
         }
 
         public void LoadDataReview()
@@ -43,7 +36,8 @@ namespace FormUtamaMovieApp
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
-                        dgvComment.DataSource = dt;
+                        vwReviewBindingSource.DataSource = dt;
+                        dgvComment.DataSource = vwReviewBindingSource;
 
                         if (dgvComment.Columns["review_id"] != null) dgvComment.Columns["review_id"].Visible = false;
                         if (dgvComment.Columns["user_id"] != null) dgvComment.Columns["user_id"].Visible = false;
@@ -51,7 +45,10 @@ namespace FormUtamaMovieApp
                         dgvComment.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     }
                 }
-                catch (Exception ex) { MessageBox.Show("Gagal memuat: " + ex.Message); }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal memuat: " + ex.Message);
+                }
             }
         }
 
@@ -84,13 +81,13 @@ namespace FormUtamaMovieApp
                             cmd.Parameters.AddWithValue("@komen", komenBaru);
 
                             cmd.ExecuteNonQuery();
-                            this.vwReviewTableAdapter.Fill(this.movieDBDataSet.vwReview);
                         }
-                        MessageBox.Show("Ulasan berhasil diperbarui!", "Sukses");
 
-                        //LoadDataReview();
-                        //txtKomentar.Clear();
-                        //numRating.Value = 0;
+                        MessageBox.Show("Ulasan berhasil diperbarui!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        LoadDataReview();
+                        txtKomentar.Clear();
+                        numRating.Value = 0;
                     }
                     catch (Exception ex)
                     {
@@ -129,10 +126,11 @@ namespace FormUtamaMovieApp
                                 cmd.Parameters.AddWithValue("@id", idReview);
 
                                 cmd.ExecuteNonQuery();
-
-                                this.vwReviewTableAdapter.Fill(this.movieDBDataSet.vwReview);
                             }
-                            MessageBox.Show("Ulasan berhasil terhapus.", "Sukses");
+
+                            MessageBox.Show("Ulasan berhasil terhapus.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            LoadDataReview();
                         }
                         catch (SqlException ex)
                         {
