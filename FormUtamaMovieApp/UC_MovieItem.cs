@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO; 
 using System.Windows.Forms;
 
 namespace FormUtamaMovieApp
@@ -18,11 +19,32 @@ namespace FormUtamaMovieApp
             btnWatchlistToggle.Click += btnWatchlistToggle_Click;
         }
 
-        public void SetDataFilm(int id, string judul)
+        public void SetDataFilm(int id, string judul, byte[] posterBiner)
         {
             this.idMovie = id;
             this.judulMovie = judul;
             lblJudulMovie.Text = judul;
+
+            if (posterBiner != null && posterBiner.Length > 0)
+            {
+                try
+                {
+                    using (MemoryStream ms = new MemoryStream(posterBiner))
+                    {
+                        pbPosterMovie.Image = Image.FromStream(ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error load poster: " + ex.Message);
+                    pbPosterMovie.Image = null; // Kosongkan jika korup
+                }
+            }
+            else
+            {
+                pbPosterMovie.Image = null;
+            }
+
             CekStatusWatchlist();
         }
 
@@ -78,7 +100,6 @@ namespace FormUtamaMovieApp
                 try
                 {
                     conn.Open();
-                    // Panggil Stored Procedure sp_ToggleWatchlist
                     using (SqlCommand cmd = new SqlCommand("sp_ToggleWatchlist", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
@@ -88,7 +109,6 @@ namespace FormUtamaMovieApp
                         cmd.ExecuteNonQuery();
                     }
 
-                    // Update status di UI
                     CekStatusWatchlist();
                     UpdateTampilanTombolWatchlist();
                 }
@@ -109,7 +129,6 @@ namespace FormUtamaMovieApp
                 try
                 {
                     conn.Open();
-                    // Panggil Stored Procedure sp_RecordHistory
                     using (SqlCommand cmd = new SqlCommand("sp_RecordHistory", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
