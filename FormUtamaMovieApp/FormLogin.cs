@@ -37,7 +37,8 @@ namespace FormUtamaMovieApp
         {
             if (string.IsNullOrWhiteSpace(txtUsernameLogin.Text) || string.IsNullOrWhiteSpace(txtPasswordLogin.Text))
             {
-                MessageBox.Show("username tidak boleh dikosongi!", "Peringatan");
+                MessageBox.Show("Username dan Password tidak boleh kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsernameLogin.Focus();
                 return;
             }
 
@@ -60,16 +61,22 @@ namespace FormUtamaMovieApp
                                 SesiUser.Nama = reader["nama"].ToString();
                                 SesiUser.RoleId = Convert.ToInt32(reader["role_id"]);
 
-                                MessageBox.Show("Login Berhasil! Halo, " + SesiUser.Nama, "Sukses");
+                                MessageBox.Show("Login Berhasil! Halo, " + SesiUser.Nama, "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.DialogResult = DialogResult.OK;
                                 this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Username atau Password salah!", "Gagal Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                txtPasswordLogin.Clear();
+                                txtUsernameLogin.Focus();
                             }
                         }
                     }
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show(ex.Message, "Gagal Login");
+                    MessageBox.Show(ex.Message, "Error Sistem");
                 }
             }
         }
