@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbPosterAdmin = new System.Windows.Forms.PictureBox();
             this.lblJudulMovie = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPosterAdmin)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // pbPosterAdmin
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(17, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 64);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pbPosterAdmin.Location = new System.Drawing.Point(17, 3);
+            this.pbPosterAdmin.Name = "pbPosterAdmin";
+            this.pbPosterAdmin.Size = new System.Drawing.Size(100, 64);
+            this.pbPosterAdmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPosterAdmin.TabIndex = 0;
+            this.pbPosterAdmin.TabStop = false;
             // 
             // lblJudulMovie
             // 
@@ -91,10 +92,10 @@
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lblJudulMovie);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbPosterAdmin);
             this.Name = "UC_MovieCardAdmin";
             this.Size = new System.Drawing.Size(563, 68);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPosterAdmin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,7 +103,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbPosterAdmin;
         private System.Windows.Forms.Label lblJudulMovie;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
