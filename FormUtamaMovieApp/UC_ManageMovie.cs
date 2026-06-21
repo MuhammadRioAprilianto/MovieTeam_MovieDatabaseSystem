@@ -39,7 +39,21 @@ namespace FormUtamaMovieApp
                             while (dr.Read())
                             {
                                 UC_MovieCardAdmin card = new UC_MovieCardAdmin();
-                                card.SetData(Convert.ToInt32(dr["movie_id"]), dr["judul"].ToString());
+
+                                // 1. Ambil data ID dan Judul
+                                int id = Convert.ToInt32(dr["movie_id"]);
+                                string judul = dr["judul"].ToString();
+
+                                // 2. Ambil data Gambar (Biner) dan pastikan tidak DBNull
+                                byte[] poster = null;
+                                if (dr["poster_image"] != DBNull.Value)
+                                {
+                                    poster = (byte[])dr["poster_image"];
+                                }
+
+                                // 3. Lempar ketiga data tersebut ke SetData
+                                card.SetData(id, judul, poster);
+
                                 card.Margin = new Padding(10);
                                 flpKatalogMovie.Controls.Add(card);
                             }
